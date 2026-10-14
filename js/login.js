@@ -1,0 +1,52 @@
+// Referencias a elementos del DOM
+const tabLogin = document.getElementById('tabLogin');
+const tabRegister = document.getElementById('tabRegister');
+const togglePill = document.getElementById('togglePill');
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const authTitle = document.getElementById('authTitle');
+const authSubtitle = document.getElementById('authSubtitle');
+
+// Comentario en línea arriba del código
+tabLogin.addEventListener('click', () => {
+  // Comentario en línea arriba del código
+  if (tabLogin.classList.contains('active') != true) {
+    tabLogin.classList.add('active');
+    tabRegister.classList.remove('active');
+    togglePill.style.transform = 'translateX(0%)';
+    
+    loginForm.classList.add('active');
+    registerForm.classList.remove('active');
+
+    authTitle.textContent = 'Bienvenido a HealthMe';
+    authSubtitle.textContent = 'Ingrese sus credenciales para acceder al sistema de gestión de salud.';
+  }
+});
+
+// Comentario en línea arriba del código
+tabRegister.addEventListener('click', () => {
+  // Comentario en línea arriba del código
+  if (tabRegister.classList.contains('active') != true) {
+    tabRegister.classList.add('active');
+    tabLogin.classList.remove('active');
+    togglePill.style.transform = 'translateX(100%)';
+
+    registerForm.classList.add('active');
+    loginForm.classList.remove('active');
+
+    authTitle.textContent = 'Crea tu cuenta';
+    authSubtitle.textContent = 'Regístrate para comenzar a gestionar tu información de salud.';
+  }
+});
+
+// Comentario en línea arriba del código
+document.querySelectorAll('.toggle-password').forEach(button => {
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    const input = document.getElementById(targetId);
+    // Comentario en línea arriba del código
+    const isPassword = input.getAttribute('type') === 'password';
+    input.setAttribute('type', isPassword ? 'text' : 'password');
+    button.textContent = isPassword ? 'Ocultar' : 'Ver';
+  });
+});

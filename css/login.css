@@ -1,0 +1,464 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* DESPLAZAMIENTO SUAVE GLOBAL */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #333333;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 2px solid #e2e8f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 6%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.nav-logo .logo-img {
+  width: 85px;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo .logo-img:hover {
+  transform: scale(1.03);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 18px;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background-color: #84d7db;
+  border-radius: 2px;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #84d7db;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+
+/* --- SECCIÓN PRINCIPAL --- */
+.login-main-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 20px 80px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #edf7f7 100%);
+  width: 100%;
+}
+
+.login-split-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 60px;
+}
+
+.login-form-area {
+  flex: 1;
+  max-width: 500px;
+  padding: 20px 0;
+}
+
+.login-header-text {
+  margin-bottom: 24px;
+}
+
+.login-header-text h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.login-header-text p {
+  color: #64748b;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+}
+
+/* BARRA DE ALTERNANCIA (TOGGLE BAR) */
+.auth-toggle-wrapper {
+  position: relative;
+  display: flex;
+  background-color: #e2e8f0;
+  border-radius: 50px;
+  padding: 4px;
+  margin-bottom: 28px;
+  width: 100%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.auth-toggle-pill {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background-color: #5cb8bc;
+  border-radius: 50px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(92, 184, 188, 0.4);
+}
+
+.auth-tab-btn {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-align: center;
+}
+
+.auth-tab-btn.active {
+  color: #ffffff;
+}
+
+/* FORMULARIOS Y ANIMACIÓN */
+.health-login-form {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.health-login-form.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 14px;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  padding: 14px 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #84d7db;
+  box-shadow: 0 0 0 4px rgba(132, 215, 219, 0.15);
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 70px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px 8px;
+  transition: color 0.3s;
+}
+
+.toggle-password:hover {
+  color: #5cb8bc;
+}
+
+.form-actions-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.forgot-password {
+  color: #5cb8bc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.forgot-password:hover {
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+.btn-health-pill {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 42px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #5cb8bc;
+  border: 3px solid #5cb8bc;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(92, 184, 188, 0.3);
+  margin-top: 10px;
+}
+
+.btn-health-pill:hover {
+  background-color: #489b9f;
+  border-color: #489b9f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(92, 184, 188, 0.45);
+}
+
+/* COLUMNA DERECHA DEL LOGO */
+.login-brand-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.brand-floating-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+}
+
+.brand-glow-bg {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(143, 214, 218, 0.35) 0%, rgba(92,184,188,0.1) 60%, transparent 80%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(20px);
+}
+
+.floating-brand-logo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  animation: floatEffect 3s ease-in-out infinite;
+}
+
+.brand-subtitle {
+  margin-top: 25px;
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 700;
+  color: #4a5568;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes floatEffect {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* FOOTER INSTITUCIONAL */
+.main-footer {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  width: 130px;
+  height: auto;
+  margin-bottom: 0px;
+}
+
+.footer-desc {
+  color: #94a3b8;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.emergency-notice {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-left: 3px solid #ef4444;
+  padding: 10px;
+  border-radius: 4px;
+  color: #fca5a5;
+  font-size: 13px;
+}
+
+.footer-col h3 {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #84d7db;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a, .footer-col a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover, .footer-col a:hover {
+  color: #84d7db;
+}
+
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+
+.disclaimer-text {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.copyright {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .login-split-grid {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+
+  .login-brand-area {
+    margin-bottom: 10px;
+  }
+
+  .floating-brand-logo {
+    max-width: 260px;
+  }
+
+  .login-form-area {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .brand-glow-bg {
+    width: 220px;
+    height: 220px;
+  }
+}
