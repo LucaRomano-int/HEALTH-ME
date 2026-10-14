@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthMe - Acceso</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="main-navbar">
+    <div class="navbar-container">
+      <div class="nav-logo">
+        <a href="index.html">
+          <img src="img/logos/logo_HealthMe_Celeste.png" alt="Logo HealthMe" class="logo-img">
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="login.html" class="nav-link btn-login active">INICIAR SESIÓN</a>
+        <a href="contact.html" class="nav-link">CONTACTO</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LOGIN & REGISTER SECTION -->
+  <main class="login-main-container">
+    <div class="login-split-grid">
+      
+      <!-- Columna Izquierda: Formulario y Toggle de pestañas -->
+      <div class="login-form-area">
+        <div class="login-header-text">
+          <h1 id="authTitle">Bienvenido a HealthMe</h1>
+          <p id="authSubtitle">Ingrese sus credenciales para acceder al sistema de gestión de salud.</p>
+        </div>
+
+        <!-- TOGGLE BAR CON INDICADOR DESLIZANTE -->
+        <div class="auth-toggle-wrapper">
+          <div class="auth-toggle-pill" id="togglePill"></div>
+          <button type="button" class="auth-tab-btn active" id="tabLogin">Iniciar Sesión</button>
+          <button type="button" class="auth-tab-btn" id="tabRegister">Registrarse</button>
+        </div>
+
+        <!-- FORMULARIO DE INICIO DE SESIÓN -->
+        <form class="health-login-form active" id="loginForm">
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="loginEmail">Correo Electrónico</label>
+            <input type="email" id="loginEmail" name="email" placeholder="ejemplo@correo.com" required>
+          </div>
+
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="loginUsername">Nombre de Usuario</label>
+            <input type="text" id="loginUsername" name="username" placeholder="Tu usuario" required>
+          </div>
+
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="loginPassword">Contraseña</label>
+            <div class="password-wrapper">
+              <input type="password" id="loginPassword" name="password" placeholder="••••••••" required>
+              <button type="button" class="toggle-password" data-target="loginPassword">Ver</button>
+            </div>
+          </div>
+
+          <div class="form-actions-row">
+            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="btn-health-pill">Ingresar</button>
+        </form>
+
+        <!-- FORMULARIO DE REGISTRO -->
+        <form class="health-login-form" id="registerForm">
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="regEmail">Correo Electrónico</label>
+            <input type="email" id="regEmail" name="email" placeholder="ejemplo@correo.com" required>
+          </div>
+
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="regUsername">Nombre de Usuario</label>
+            <input type="text" id="regUsername" name="username" placeholder="Crea tu nombre de usuario" required>
+          </div>
+
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="regPassword">Contraseña</label>
+            <div class="password-wrapper">
+              <input type="password" id="regPassword" name="password" placeholder="Crea una contraseña segura" required>
+              <button type="button" class="toggle-password" data-target="regPassword">Ver</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Comentario en línea arriba del código -->
+            <label for="regConfirmPassword">Confirmar Contraseña</label>
+            <div class="password-wrapper">
+              <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" required>
+              <button type="button" class="toggle-password" data-target="regConfirmPassword">Ver</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-health-pill">Crear Cuenta</button>
+        </form>
+
+      </div>
+
+      <!-- Columna Derecha: Logo Flotante Libre (Sin caja contenedora) -->
+      <div class="login-brand-area">
+        <div class="brand-floating-wrapper">
+          <div class="brand-glow-bg"></div>
+          <img src="img/logos/logo_HealthMe_Celeste.png" alt="Isotipo HealthMe" class="floating-brand-logo">
+          <span class="brand-subtitle">Gestión Integral de la Salud</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      
+      <div class="footer-col">
+        <img src="img/logos/logoName_HealthMe_Blanco.png" alt="HealthMe Logo" class="footer-logo">
+        <p class="footer-desc">Plataforma digital para la gestión y seguimiento integral de la salud.</p>
+        <div class="emergency-notice">
+          <strong>En caso de emergencia médica inmediata, comuníquese al 911 o acuda al centro asistencial más cercano.</strong>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Navegación</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#quienes-somos">Quiénes Somos</a></li>
+          <li><a href="contact.html">Habla con nosotros</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Marco Legal y Privacidad</h3>
+        <ul>
+          <li><a href="#">Términos y Condiciones de Uso</a></li>
+          <li><a href="#">Política de Privacidad y Protección de Datos</a></li>
+          <li><a href="#">Consentimiento Informado Digital</a></li>
+          <li><a href="#">Ley de Derechos del Paciente</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Soporte y Contacto</h3>
+        <p>Email: <a href="mailto:soporte@healthme.com">soporte@healthme.com</a></p>
+        <p>Horario: 24 hs</p>
+        <p>Atención al Usuario / Reclamos de Privacidad</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="disclaimer-text">
+        <strong>Aviso Médico Importante:</strong> La información provista en esta plataforma no sustituye el diagnóstico, tratamiento o consejo médico profesional. Consulte siempre con un profesional de la salud matriculado ante cualquier duda sobre su condición clínica.
+      </p>
+      <div class="copyright">
+        <p>&copy; 2026 HealthMe. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Archivo JavaScript separado -->
+  <script src="js/login.js"></script>
+</body>
+</html>
