@@ -13,7 +13,23 @@ contactForm.addEventListener('submit', (e) => {
   
   // Comentario en línea arriba del código
   if (name != '' && lastname != '' && email != '' && motivo != '') {
-    alert(`¡Gracias por contactarnos, ${name} ${lastname}! Hemos recibido tu mensaje sobre "${motivo}" y te responderemos a la brevedad a ${email}.`);
-    contactForm.reset();
+    
+    // Envía el formulario a guardar_contacto.php para guardarlo en consulta_contacto
+    fetch('php/guardar_contacto.php', {
+      method: 'POST',
+      body: new FormData(contactForm)
+    })
+      .then((respuesta) => respuesta.json())
+      .then((datos) => {
+        if (datos.ok) {
+          alert(`¡Gracias por contactarnos, ${name} ${lastname}! Hemos recibido tu mensaje sobre "${motivo}" y te responderemos a la brevedad a ${email}.`);
+          contactForm.reset();
+        } else {
+          alert('No pudimos enviar tu mensaje. Intenta nuevamente.');
+        }
+      })
+      .catch(() => {
+        alert('No pudimos enviar tu mensaje. Intenta nuevamente.');
+      });
   }
 });

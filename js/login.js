@@ -50,3 +50,46 @@ document.querySelectorAll('.toggle-password').forEach(button => {
     button.textContent = isPassword ? 'Ocultar' : 'Ver';
   });
 });
+
+// Envía el formulario de inicio de sesión a su endpoint PHP
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  fetch('php/login_usuario.php', {
+    method: 'POST',
+    body: new FormData(loginForm)
+  })
+    .then((respuesta) => respuesta.json())
+    .then((datos) => {
+      if (datos.ok) {
+        alert('¡Inicio de sesión exitoso!');
+      } else {
+        alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
+      }
+    })
+    .catch(() => {
+      alert('No pudimos conectar con el servidor. Intenta nuevamente.');
+    });
+});
+
+// Envía el formulario de registro a su endpoint PHP
+registerForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  fetch('php/registrar_usuario.php', {
+    method: 'POST',
+    body: new FormData(registerForm)
+  })
+    .then((respuesta) => respuesta.json())
+    .then((datos) => {
+      if (datos.ok) {
+        alert('¡Cuenta creada con éxito! Ya puedes iniciar sesión.');
+        registerForm.reset();
+      } else {
+        alert(datos.mensaje || 'No pudimos crear la cuenta. Intenta nuevamente.');
+      }
+    })
+    .catch(() => {
+      alert('No pudimos conectar con el servidor. Intenta nuevamente.');
+    });
+});

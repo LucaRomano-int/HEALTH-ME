@@ -64,6 +64,22 @@ CREATE TABLE `contacto_sos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `consulta_contacto`
+--
+
+CREATE TABLE `consulta_contacto` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `asunto` varchar(150) NOT NULL,
+  `mensaje` text NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cumplimiento`
 --
 
@@ -245,7 +261,10 @@ CREATE TABLE `usuario` (
   `rol` enum('acompañante','afectado') NOT NULL DEFAULT 'afectado',
   `ultima_conexion` datetime DEFAULT NULL,
   `token_dispositivo` varchar(255) DEFAULT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `dni` (`dni`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
