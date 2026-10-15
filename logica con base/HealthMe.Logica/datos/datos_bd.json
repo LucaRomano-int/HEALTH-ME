@@ -1,0 +1,681 @@
+{
+ "usuario": [
+  {
+   "id": 1,
+   "nombre": "Admin",
+   "apellido": "HealthMe",
+   "dni": null,
+   "email": "admin@healthme.test",
+   "password_hash": "$2y$10$uMEGMwaFd.QwZp/lA9yS7.ZBIfa59MlKb8JQexc7toJ.2gqLRUVzm",
+   "obra_social": null,
+   "rol": null,
+   "nivel": "administrador",
+   "activo": 1,
+   "fecha_inicio_seguimiento": null,
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 2,
+   "nombre": "Carlos",
+   "apellido": "Gómez",
+   "dni": "12345678",
+   "email": "carlos.gomez@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": "PAMI",
+   "rol": "afectado",
+   "nivel": "general",
+   "activo": 1,
+   "fecha_inicio_seguimiento": "2026-09-01",
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 3,
+   "nombre": "Marta",
+   "apellido": "Gómez",
+   "dni": "23456789",
+   "email": "marta.gomez@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": "OSDE",
+   "rol": "acompañante",
+   "nivel": "general",
+   "activo": 1,
+   "fecha_inicio_seguimiento": null,
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 4,
+   "nombre": "Julia",
+   "apellido": "Pérez",
+   "dni": "34567890",
+   "email": "julia.perez@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": "PAMI",
+   "rol": "afectado",
+   "nivel": "general",
+   "activo": 1,
+   "fecha_inicio_seguimiento": "2026-09-15",
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 5,
+   "nombre": "Lucía",
+   "apellido": "Pérez",
+   "dni": "45678901",
+   "email": "lucia.perez@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": "OSDE",
+   "rol": "acompañante",
+   "nivel": "general",
+   "activo": 1,
+   "fecha_inicio_seguimiento": null,
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 6,
+   "nombre": "Nuevo",
+   "apellido": null,
+   "dni": null,
+   "email": "nuevo@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": null,
+   "rol": null,
+   "nivel": "general",
+   "activo": 1,
+   "fecha_inicio_seguimiento": null,
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  },
+  {
+   "id": 7,
+   "nombre": "Baja",
+   "apellido": "Usuario",
+   "dni": "56789012",
+   "email": "baja@example.com",
+   "password_hash": "$2y$10$hXugwH.3UAs6Yq7PFhfTZOSWexCWO6kphTBenGaiJihK.WxfJp9Bi",
+   "obra_social": null,
+   "rol": "afectado",
+   "nivel": "general",
+   "activo": 0,
+   "fecha_inicio_seguimiento": null,
+   "ultima_conexion": null,
+   "token_dispositivo": null,
+   "fecha_creacion": "2026-10-14 20:17:37"
+  }
+ ],
+ "miembro_grupo": [
+  {
+   "id_grupo": 1,
+   "id_usuario": 2,
+   "rol_dentro_grupo": "miembro",
+   "aprobado": 1,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  },
+  {
+   "id_grupo": 1,
+   "id_usuario": 3,
+   "rol_dentro_grupo": "creador",
+   "aprobado": 1,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  },
+  {
+   "id_grupo": 1,
+   "id_usuario": 5,
+   "rol_dentro_grupo": "miembro",
+   "aprobado": 0,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  },
+  {
+   "id_grupo": 1,
+   "id_usuario": 7,
+   "rol_dentro_grupo": "miembro",
+   "aprobado": 1,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  },
+  {
+   "id_grupo": 2,
+   "id_usuario": 4,
+   "rol_dentro_grupo": "miembro",
+   "aprobado": 1,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  },
+  {
+   "id_grupo": 2,
+   "id_usuario": 5,
+   "rol_dentro_grupo": "creador",
+   "aprobado": 1,
+   "fecha_ingreso": "2026-10-14 20:17:37"
+  }
+ ],
+ "tipo_medicion": [
+  {
+   "id": 1,
+   "nombre": "Glucosa",
+   "unidad": "mg/dL",
+   "rango_normal_min": 70.0,
+   "rango_normal_max": 140.0
+  },
+  {
+   "id": 2,
+   "nombre": "Ritmo cardíaco",
+   "unidad": "lpm",
+   "rango_normal_min": 60.0,
+   "rango_normal_max": 100.0
+  },
+  {
+   "id": 3,
+   "nombre": "Presión sistólica",
+   "unidad": "mmHg",
+   "rango_normal_min": 90.0,
+   "rango_normal_max": 120.0
+  },
+  {
+   "id": 4,
+   "nombre": "Presión diastólica",
+   "unidad": "mmHg",
+   "rango_normal_min": 60.0,
+   "rango_normal_max": 80.0
+  },
+  {
+   "id": 5,
+   "nombre": "Temperatura",
+   "unidad": "°C",
+   "rango_normal_min": 36.0,
+   "rango_normal_max": 37.5
+  }
+ ],
+ "medicion": [
+  {
+   "id": 1,
+   "id_usuario": 2,
+   "id_tipo": 1,
+   "valor": 110.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-05 08:00:00"
+  },
+  {
+   "id": 2,
+   "id_usuario": 2,
+   "id_tipo": 1,
+   "valor": 165.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-12 08:00:00"
+  },
+  {
+   "id": 3,
+   "id_usuario": 2,
+   "id_tipo": 1,
+   "valor": 130.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-19 08:10:00"
+  },
+  {
+   "id": 4,
+   "id_usuario": 2,
+   "id_tipo": 1,
+   "valor": 95.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-26 08:00:00"
+  },
+  {
+   "id": 5,
+   "id_usuario": 2,
+   "id_tipo": 2,
+   "valor": 88.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-05 08:05:00"
+  },
+  {
+   "id": 6,
+   "id_usuario": 2,
+   "id_tipo": 2,
+   "valor": 104.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-12 08:05:00"
+  },
+  {
+   "id": 7,
+   "id_usuario": 2,
+   "id_tipo": 2,
+   "valor": 92.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-19 08:15:00"
+  },
+  {
+   "id": 8,
+   "id_usuario": 2,
+   "id_tipo": 3,
+   "valor": 118.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-05 08:10:00"
+  },
+  {
+   "id": 9,
+   "id_usuario": 2,
+   "id_tipo": 4,
+   "valor": 78.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-05 08:10:00"
+  },
+  {
+   "id": 10,
+   "id_usuario": 2,
+   "id_tipo": 3,
+   "valor": 126.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-12 08:10:00"
+  },
+  {
+   "id": 11,
+   "id_usuario": 2,
+   "id_tipo": 4,
+   "valor": 84.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-12 08:10:00"
+  },
+  {
+   "id": 12,
+   "id_usuario": 2,
+   "id_tipo": 3,
+   "valor": 121.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-19 08:20:00"
+  },
+  {
+   "id": 13,
+   "id_usuario": 2,
+   "id_tipo": 4,
+   "valor": 82.0,
+   "valor2": null,
+   "fecha_hora": "2026-09-19 08:20:00"
+  },
+  {
+   "id": 14,
+   "id_usuario": 2,
+   "id_tipo": 5,
+   "valor": 36.6,
+   "valor2": null,
+   "fecha_hora": "2026-09-20 20:00:00"
+  },
+  {
+   "id": 15,
+   "id_usuario": 2,
+   "id_tipo": 1,
+   "valor": 102.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-03 08:00:00"
+  },
+  {
+   "id": 16,
+   "id_usuario": 2,
+   "id_tipo": 2,
+   "valor": 90.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-04 08:05:00"
+  },
+  {
+   "id": 17,
+   "id_usuario": 2,
+   "id_tipo": 3,
+   "valor": 119.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-04 08:10:00"
+  },
+  {
+   "id": 18,
+   "id_usuario": 2,
+   "id_tipo": 4,
+   "valor": 79.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-04 08:10:00"
+  },
+  {
+   "id": 19,
+   "id_usuario": 4,
+   "id_tipo": 3,
+   "valor": 135.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-02 09:00:00"
+  },
+  {
+   "id": 20,
+   "id_usuario": 4,
+   "id_tipo": 4,
+   "valor": 85.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-02 09:00:00"
+  },
+  {
+   "id": 21,
+   "id_usuario": 4,
+   "id_tipo": 3,
+   "valor": 128.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-04 09:00:00"
+  },
+  {
+   "id": 22,
+   "id_usuario": 4,
+   "id_tipo": 4,
+   "valor": 82.0,
+   "valor2": null,
+   "fecha_hora": "2026-10-04 09:00:00"
+  }
+ ],
+ "estado_diario": [
+  {
+   "id": 1,
+   "id_usuario": 2,
+   "fecha": "2026-09-05",
+   "valor": 3
+  },
+  {
+   "id": 2,
+   "id_usuario": 2,
+   "fecha": "2026-09-12",
+   "valor": 2
+  },
+  {
+   "id": 3,
+   "id_usuario": 2,
+   "fecha": "2026-09-19",
+   "valor": 3
+  },
+  {
+   "id": 4,
+   "id_usuario": 2,
+   "fecha": "2026-09-26",
+   "valor": 4
+  },
+  {
+   "id": 5,
+   "id_usuario": 2,
+   "fecha": "2026-10-02",
+   "valor": 3
+  },
+  {
+   "id": 6,
+   "id_usuario": 2,
+   "fecha": "2026-10-03",
+   "valor": 2
+  },
+  {
+   "id": 7,
+   "id_usuario": 2,
+   "fecha": "2026-10-04",
+   "valor": 3
+  },
+  {
+   "id": 8,
+   "id_usuario": 4,
+   "fecha": "2026-10-02",
+   "valor": 3
+  },
+  {
+   "id": 9,
+   "id_usuario": 4,
+   "fecha": "2026-10-03",
+   "valor": 3
+  },
+  {
+   "id": 10,
+   "id_usuario": 4,
+   "fecha": "2026-10-04",
+   "valor": 4
+  }
+ ],
+ "medicamento": [
+  {
+   "id": 1,
+   "id_usuario": 2,
+   "nombre": "Metformina",
+   "presentacion": "850 mg - comprimidos",
+   "cantidad_actual": 40,
+   "umbral_alerta_stock_bajo": 10
+  },
+  {
+   "id": 2,
+   "id_usuario": 2,
+   "nombre": "Enalapril",
+   "presentacion": "10 mg - comprimidos",
+   "cantidad_actual": 8,
+   "umbral_alerta_stock_bajo": 10
+  },
+  {
+   "id": 3,
+   "id_usuario": 4,
+   "nombre": "Losartán",
+   "presentacion": "50 mg - comprimidos",
+   "cantidad_actual": 25,
+   "umbral_alerta_stock_bajo": 7
+  },
+  {
+   "id": 4,
+   "id_usuario": 4,
+   "nombre": "Salbutamol",
+   "presentacion": "Aerosol 100 mcg",
+   "cantidad_actual": 2,
+   "umbral_alerta_stock_bajo": 1
+  }
+ ],
+ "recordatorio": [
+  {
+   "id": 1,
+   "id_usuario": 2,
+   "id_medicamento": 1,
+   "tipo": "horario",
+   "titulo": "Tomar Metformina",
+   "fecha_hora": "2026-09-01 08:00:00",
+   "repeticion": "diaria",
+   "dosis_unidades": 1,
+   "activo": 1
+  },
+  {
+   "id": 2,
+   "id_usuario": 2,
+   "id_medicamento": null,
+   "tipo": "evento",
+   "titulo": "Turno con el cardiólogo",
+   "fecha_hora": "2026-10-15 10:30:00",
+   "repeticion": "ninguna",
+   "dosis_unidades": 1,
+   "activo": 1
+  },
+  {
+   "id": 3,
+   "id_usuario": 4,
+   "id_medicamento": 3,
+   "tipo": "horario",
+   "titulo": "Tomar Losartán",
+   "fecha_hora": "2026-09-15 09:00:00",
+   "repeticion": "diaria",
+   "dosis_unidades": 1,
+   "activo": 1
+  }
+ ],
+ "config_alarma": [
+  {
+   "id": 1,
+   "id_recordatorio": 1,
+   "dias_anticipacion": null
+  },
+  {
+   "id": 2,
+   "id_recordatorio": 2,
+   "dias_anticipacion": 2
+  },
+  {
+   "id": 3,
+   "id_recordatorio": 3,
+   "dias_anticipacion": null
+  }
+ ],
+ "esperado_sql": {
+  "estadisticas": [
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "id_tipo": 1,
+    "cantidad": 4,
+    "promedio": 125.0,
+    "minimo": 95.0,
+    "maximo": 165.0,
+    "porcentaje_en_rango": 75.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "id_tipo": 2,
+    "cantidad": 3,
+    "promedio": 94.67,
+    "minimo": 88.0,
+    "maximo": 104.0,
+    "porcentaje_en_rango": 66.67
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "id_tipo": 3,
+    "cantidad": 3,
+    "promedio": 121.67,
+    "minimo": 118.0,
+    "maximo": 126.0,
+    "porcentaje_en_rango": 33.33
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "id_tipo": 4,
+    "cantidad": 3,
+    "promedio": 81.33,
+    "minimo": 78.0,
+    "maximo": 84.0,
+    "porcentaje_en_rango": 33.33
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "id_tipo": 5,
+    "cantidad": 1,
+    "promedio": 36.6,
+    "minimo": 36.6,
+    "maximo": 36.6,
+    "porcentaje_en_rango": 100.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-10-01",
+    "periodo_fin": "2026-10-31",
+    "id_tipo": 1,
+    "cantidad": 1,
+    "promedio": 102.0,
+    "minimo": 102.0,
+    "maximo": 102.0,
+    "porcentaje_en_rango": 100.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-10-01",
+    "periodo_fin": "2026-10-31",
+    "id_tipo": 2,
+    "cantidad": 1,
+    "promedio": 90.0,
+    "minimo": 90.0,
+    "maximo": 90.0,
+    "porcentaje_en_rango": 100.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-10-01",
+    "periodo_fin": "2026-10-31",
+    "id_tipo": 3,
+    "cantidad": 1,
+    "promedio": 119.0,
+    "minimo": 119.0,
+    "maximo": 119.0,
+    "porcentaje_en_rango": 100.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-10-01",
+    "periodo_fin": "2026-10-31",
+    "id_tipo": 4,
+    "cantidad": 1,
+    "promedio": 79.0,
+    "minimo": 79.0,
+    "maximo": 79.0,
+    "porcentaje_en_rango": 100.0
+   },
+   {
+    "id_usuario": 4,
+    "periodo_inicio": "2026-09-15",
+    "periodo_fin": "2026-10-14",
+    "id_tipo": 3,
+    "cantidad": 2,
+    "promedio": 131.5,
+    "minimo": 128.0,
+    "maximo": 135.0,
+    "porcentaje_en_rango": 0.0
+   },
+   {
+    "id_usuario": 4,
+    "periodo_inicio": "2026-09-15",
+    "periodo_fin": "2026-10-14",
+    "id_tipo": 4,
+    "cantidad": 2,
+    "promedio": 83.5,
+    "minimo": 82.0,
+    "maximo": 85.0,
+    "porcentaje_en_rango": 0.0
+   }
+  ],
+  "animo": [
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-09-01",
+    "periodo_fin": "2026-09-30",
+    "cantidad": 4,
+    "promedio": 3.0
+   },
+   {
+    "id_usuario": 2,
+    "periodo_inicio": "2026-10-01",
+    "periodo_fin": "2026-10-31",
+    "cantidad": 3,
+    "promedio": 2.67
+   },
+   {
+    "id_usuario": 4,
+    "periodo_inicio": "2026-09-15",
+    "periodo_fin": "2026-10-14",
+    "cantidad": 3,
+    "promedio": 3.33
+   }
+  ],
+  "visibles": [
+   {
+    "id_acompanante": 3,
+    "id_afectado": 2
+   },
+   {
+    "id_acompanante": 5,
+    "id_afectado": 4
+   }
+  ]
+ }
+}
