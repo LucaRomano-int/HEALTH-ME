@@ -1,112 +1,165 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HealthMe - Inicio</title>
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTech - Home</title>
+    <link rel="icon" type="image/x-icon" href="\img\Logos\NovaTech_MiniLogo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
 </head>
 <body>
 
-  <!-- NAVBAR (Inicia oculta y aparece al scrollear) -->
-  <header class="navbar navbar-hidden" id="main-navbar">
-    <div class="navbar-container">
-      <div class="nav-logo">
-        <a href="#home">
-          <img src="img\logos\logoHealthMeCeleste.png" alt="Logo HealthMe" class="logo-img">
-        </a>
-      </div>
-      <nav class="nav-links">
-        <a href="#quienes-somos" class="nav-link">HOME</a>
-        <a href="login.html" class="nav-link btn-login">INICIAR SESIÓN</a>
-        <a href="contact.html" class="nav-link">CONTACTO</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO SECTION (100vh - Pantalla Completa) -->
-  <section id="home" class="hero-section">
-    <div class="hero-content">
-      <img src="img\logos\logoHealthMeBlanco.png" alt="Hero Logo HealthMe" class="hero-logo">
-      <a href="#quienes-somos" class="btn-hero-more">Saber más</a>
-    </div>
-  </section>
-
-  <!-- ABOUT US / QUIÉNES SOMOS -->
-  <section id="quienes-somos" class="about-section">
-    <h2 class="section-title">QUIÉNES SOMOS</h2>
-    <div class="about-container">
-      <div class="about-text-box">
-        <p>En HealthMe nos dedicamos a brindar soluciones digitales integrales para la salud. Facilitamos el acceso a la gestión médica, conectando profesionales y pacientes de forma ágil, segura y confiable.</p>
-      </div>
-      <div class="about-img-box">
-        <img src="img\renders\renderAppPlataforma.jpg" alt="Sobre nosotros" class="render-img">
-      </div>
-    </div>
-  </section>
-
-  <!-- DOWNLOAD / ENLACES SECTION -->
-  <section class="download-section">
-    <div class="download-container">
-      <h2>DESCARGA NUESTRA APLICACIÓN</h2>
-      <p class="download-subtitle">Accede a tus registros médicos e información de salud desde cualquier dispositivo.</p>
-      <div class="download-buttons">
-        <a href="#" class="btn-download">Google Play Store</a>
-        <a href="#" class="btn-download">Descarga Escritorio</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="main-footer">
-    <div class="footer-container">
-      
-      <div class="footer-col">
-        <img src="img/logos/logoNameHealthMeBlanco.png" alt="HealthMe Logo" class="footer-logo">
-        <p class="footer-desc">Plataforma digital para la gestión y seguimiento integral de la salud.</p>
-        <div class="emergency-notice">
-          <strong>En caso de emergencia médica inmediata, comuníquese al 911 o acuda al centro asistencial más cercano.</strong>
+<header class="site-header">
+    <div class="header-inner">
+        <div class="header-logo">
+            <a href="index.html" class="logo-button" title="Ir al Inicio" aria-label="Ir al Inicio">
+                <img src="\img\Logos\NovaTech_Logo_Violeta.png" alt="Logo">
+            </a>
         </div>
-      </div>
 
-      <div class="footer-col">
-        <h3>Navegación</h3>
-        <ul>
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#quienes-somos">Quiénes Somos</a></li>
-          <li><a href="#contacto">Habla con nosotros</a></li>
-        </ul>
-      </div>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+            <a href="index.html" data-nav="home">INICIO</a>
+            <a href="catalogo.html" data-nav="catalogo">CATÁLOGO</a>
+            <a href="contacto.html" data-nav="contacto">CONTACTO</a>
+        </nav>
 
-      <div class="footer-col">
-        <h3>Marco Legal y Privacidad</h3>
-        <ul>
-          <li><a href="#">Términos y Condiciones de Uso</a></li>
-          <li><a href="#">Política de Privacidad y Protección de Datos</a></li>
-          <li><a href="#">Consentimiento Informado Digital</a></li>
-          <li><a href="#">Ley de Derechos del Paciente</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>Soporte y Contacto</h3>
-        <p>Email: <a href="mailto:soporte@healthme.com">soporte@healthme.com</a></p>
-        <p>Horario: 24 hs</p>
-        <p>Atención al Usuario / Reclamos de Privacidad</p>
-      </div>
-
+        <div class="header-controls">
+            <div class="search-box">
+                <input type="text" id="global-search" placeholder="Buscar Productos..." aria-label="Buscar iPhone" autocomplete="off">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <!-- Menú desplegable para los resultados -->
+                <div id="search-results" class="search-results-dropdown"></div>
+            </div>  
+            <button type="button" class="cart-button" data-action="open-cart" aria-label="Abrir carrito">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="cart-badge">0</span>
+            </button>
+        </div>
     </div>
 
-    <div class="footer-bottom">
-      <p class="disclaimer-text">
-        <strong>Aviso Médico Importante:</strong> La información provista en esta plataforma no sustituye el diagnóstico, tratamiento o consejo médico profesional. Consulte siempre con un profesional de la salud matriculado ante cualquier duda sobre su condición clínica.
-      </p>
-      <div class="copyright">
-        <p>&copy; 2026 HealthMe. Todos los derechos reservados.</p>
-      </div>
-    </div>
-  </footer>
+    <nav class="mobile-nav" aria-label="Navegación móvil">
+        <a href="index.html" data-nav="home">INICIO</a>
+        <a href="catalogo.html" data-nav="catalogo">CATÁLOGO</a>
+        <a href="contacto.html" data-nav="contacto">CONTACTO</a>
+    </nav>
+</header>
 
-  <script src="js/main.js"></script>
+<main id="main-content" class="page-main">
+    <div class="page-view">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="\img\Logos\NovaTech_Logo_Blanco.png" alt="Logo">
+                </div>
+                <h1>Conseguir los mejores accesorios para tu iPhone nunca fue tan fácil.</h1>
+                <a href="catalogo.html" class="hero-button">Explorar Catálogo</a>
+            </div>
+        </section>
+
+        <section class="featured-section content-container">
+            <div class="section-heading">
+                <div>
+                    <h2>Productos Destacados</h2>
+                    <p>Los dispositivos más elegidos de esta temporada</p>
+                </div>
+                <a href="catalogo.html" class="view-all">Ver todos <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div id="featured-products" class="featured-grid"></div>
+        </section>
+
+        <section class="home-contact">
+            <div class="home-contact-inner">
+                <h2>¿Tienes alguna duda?</h2>
+                <p>Déjanos tu mensaje y un especialista de NovaTech se pondrá en contacto contigo.</p>
+                <form id="home-contact-form" class="home-contact-form">
+                    <div class="form-grid">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    </div>
+                    <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" rows="3" required></textarea>
+                    <button type="submit">Enviar Consulta</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</main>
+
+<div id="cart-drawer-backdrop" class="cart-backdrop" data-action="close-cart"></div>
+<aside id="cart-drawer" class="cart-drawer" aria-label="Carrito de compras">
+    <div class="cart-header">
+        <div class="cart-title">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <h3>Tu Carrito de Compras</h3>
+        </div>
+        <button type="button" data-action="close-cart" aria-label="Cerrar carrito">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div id="cart-items-container" class="cart-items"></div>
+    <div class="cart-footer">
+        <div class="cart-subtotal-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+        </div>
+        <p>Impuestos y gastos de envío calculados en la pantalla de pago.</p>
+        <button type="button" class="checkout-button" data-action="checkout">
+            <span>Finalizar Compra</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+</aside>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-brand-title">
+                    <span>NovaTech</span>
+                </div>
+                <p>Tu tienda de confianza con la mayor selección de productos Apple iPhone. Garantía oficial, cuotas sin interés y atención personalizada.</p>
+            </div>
+            <div>
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo Completo</a></li>
+                    <li><a href="contacto.html">Atención al Cliente</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Categorías</h4>
+                <ul>
+                    <li><a href="catalogo.html?categoria=iPhone%20Pro">iPhone Serie Pro</a></li>
+                    <li><a href="catalogo.html?categoria=iPhone%20Base">iPhone Serie Estándar</a></li>
+                    <li><a href="catalogo.html?categoria=Accesorios">Fundas &amp; Cargadores</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Métodos de Pago</h4>
+                <div class="payment-icons">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-apple-pay"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+                <p>Transacciones encriptadas SSL de 256 bits.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NovaTech Inc. Todos los derechos reservados.</p>
+            <div>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Garantía Apple</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/contacto.js"></script>
 </body>
 </html>
