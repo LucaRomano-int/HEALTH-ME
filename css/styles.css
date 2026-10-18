@@ -431,10 +431,30 @@ body {
 }
 
 @media (max-width: 768px) {
-  .navbar-container {
-    padding: 8px 4%;
+.navbar-container {
+    display: flex;
+    justify-content: flex-end; /* Empuja el menú hamburguesa hacia la derecha */
+    align-items: center;
+    position: relative;
+    padding: 30px 6%; /* Mismo tamaño y padding que en desktop */
   }
 
+    /* Comentario: Centrado absoluto real del logo respecto a toda la barra */
+  .nav-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+
+  /* Comentario: Botón hamburguesa alineado a la derecha */
+  .menu-toggle {
+    display: flex;
+    margin-left: auto; /* Garantiza la alineación a la derecha */
+    z-index: 1001;
+  }
+  
   .download-buttons {
     flex-direction: column;
     align-items: center;
@@ -445,3 +465,4 @@ body {
     max-width: 280px;
   }
 }
+

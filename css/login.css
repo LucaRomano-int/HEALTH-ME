@@ -20,74 +20,6 @@ body {
   flex-direction: column;
 }
 
-/* NAVBAR */
-.navbar {
-  background-color: #ffffff;
-  border-bottom: 2px solid #e2e8f0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 6%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.nav-logo .logo-img {
-  width: 85px;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.nav-logo .logo-img:hover {
-  transform: scale(1.03);
-}
-
-.nav-links {
-  display: flex;
-  gap: 35px;
-  align-items: center;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: 700;
-  font-size: 18px;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background-color: #84d7db;
-  border-radius: 2px;
-  transition: width 0.3s ease-in-out;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: #84d7db;
-}
-
-.nav-link:hover::after, .nav-link.active::after {
-  width: 100%;
-}
-
 /* --- SECCIÓN PRINCIPAL --- */
 .login-main-container {
   flex: 1;
@@ -439,26 +371,44 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  /* Reducimos el espacio superior en mobile para subir la estructura */
+  .login-main-container {
+    padding: 80px 15px 40px 15px;
+  }
+
   .login-split-grid {
     flex-direction: column-reverse;
-    gap: 40px;
+    gap: 30px;
   }
 
   .login-brand-area {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+  }
+
+  /* Reducimos el padding interno del contenedor del logo */
+  .brand-floating-wrapper {
+    padding: 30px 10px;
   }
 
   .floating-brand-logo {
-    max-width: 260px;
+    max-width: 240px;
+  }
+
+  /* Centramos explícitamente el subtítulo en mobile */
+  .brand-subtitle {
+    text-align: center;
+    margin-top: 15px;
   }
 
   .login-form-area {
     width: 100%;
     max-width: 100%;
+    margin-top: -50px;
   }
 
   .brand-glow-bg {
-    width: 220px;
-    height: 220px;
+    width: 200px;
+    height: 200px;
   }
 }
+
