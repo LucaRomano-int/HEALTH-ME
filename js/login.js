@@ -93,3 +93,21 @@ registerForm.addEventListener('submit', (e) => {
       alert('No pudimos conectar con el servidor. Intenta nuevamente.');
     });
 });
+
+// Validación para controlar el menú desplegable en dispositivos móviles y zoom
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+if (menuToggle != null && navLinks != null) {
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+  });
+
+  // Comentario: Cierra el menú automáticamente al hacer clic en alguna opción
+  const links = navLinks.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-active');
+    });
+  });
+}
