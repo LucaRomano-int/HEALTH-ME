@@ -6,7 +6,7 @@ const medicalParametersData = [
     value: 120,
     unit: "mmHg",
     infoText: "Mide la fuerza de la sangre contra las paredes de las arterias.",
-    howToMeasure: "Se mide mediante un tensiómetro digital o manual.",
+    howToMeasure: "Se mide mediante un tensiómetro digital o manual.\n\nNormal - 120.\nAceptado - 140.\n Hipertension - Mayor a 140.",
     /* LÓGICA DE CALIFICACIÓN DE PRESIÓN ARTERIAL: <120 Bueno, 120-139 Aceptable, >=140 Malo */
     evaluateStatus: function (val) {
       if (val < 120) {
@@ -24,7 +24,7 @@ const medicalParametersData = [
     value: 72,
     unit: "LPM",
     infoText: "Cantidad de latidos del corazón por minuto.",
-    howToMeasure: "Se toma colocando los dedos en la muñeca o mediante oxímetro/reloj.",
+    howToMeasure: "Se toma colocando los dedos en la muñeca o mediante oxímetro/reloj.\n\nNormal - 60 a 80\nAceptable - 81 a 100\n Grave - mayor a 100",
     /* LÓGICA DE CALIFICACIÓN DE FRECUENCIA CARDÍACA: 60-80 Bueno, 81-100 Aceptable, <60 o >100 Malo */
     evaluateStatus: function (val) {
       if (val >= 60 && val <= 80) {
@@ -42,14 +42,11 @@ const medicalParametersData = [
     value: 95,
     unit: "mg/dL",
     infoText: "Concentración de azúcar presente en el torrente sanguíneo.",
-    howToMeasure: "Se mide en ayunas con un glucómetro de punción digital.",
+    howToMeasure: "Se mide en ayunas con un glucómetro de punción digital.\n\nGENTE SIN DIABETES:\nNormal (En ayunas) - menos de 100 \nNormal - (Despues del almuerzo) - menos de 140 \n\nGENTE CON DIABETES:\nNormal (En ayunas) - entre 80 y 130 \nNormal - (Despues del almuerzo) - menos de 180 \n\nEN AMBOS CASOS:\n Hipoglusemia - menos de 70",
     /* LÓGICA DE CALIFICACIÓN DE GLUCOSA: 70-99 Bueno, 100-125 Aceptable, <70 o >125 Malo */
     evaluateStatus: function (val) {
-      if (val >= 70 && val <= 99) {
+      if (val >= 80 && val <= 140) {
         return { text: "Bueno", cssClass: "status-good" };
-      }
-      if (val >= 100 && val <= 125) {
-        return { text: "Aceptable", cssClass: "status-acceptable" };
       }
       return { text: "Hipoglucemia", cssClass: "status-bad" };
     }
@@ -60,13 +57,13 @@ const medicalParametersData = [
     value: 98,
     unit: "%",
     infoText: "Porcentaje de oxígeno que transporta la hemoglobina en sangre.",
-    howToMeasure: "Se mide con un oxímetro de pulso colocado en el dedo.",
-    /* LÓGICA DE CALIFICACIÓN DE SATURACIÓN: >=100 Bueno, 90-99 Aceptable, <90 Malo */
+    howToMeasure: "Se mide con un oxímetro de pulso colocado en el dedo.\n\nOptimo - 100\nCuidado y Consultar - 90\n Medico Urgente - Menor a 80",
+    /* LÓGICA DE CALIFICACIÓN DE SATURACIÓN: >=100 Bueno, 81-99 Aceptable, <90 Malo */
     evaluateStatus: function (val) {
       if (val >= 100) {
         return { text: "Bueno", cssClass: "status-good" };
       }
-      if (val >= 90 && val <= 99) {
+      if (val >= 81 && val <= 99) {
         return { text: "Aceptable", cssClass: "status-acceptable" };
       }
       return { text: "Malo", cssClass: "status-bad" };
