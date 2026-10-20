@@ -281,9 +281,9 @@ body {
 .main-footer {
   background-color: #1e293b;
   color: #e2e8f0;
-  padding-top: 30px;
-  padding-bottom: 10px;
-  font-size: 14px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+  font-size: 13px;
 }
 
 .footer-container {
@@ -291,39 +291,41 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 35px;
-  margin-bottom: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 15px;
 }
 
 .footer-logo {
-  width: 120px;
+  width: 95px;
   height: auto;
-  margin-bottom: 0px;
+  margin-bottom: 4px;
 }
 
 .footer-desc {
   color: #94a3b8;
-  margin-bottom: 15px;
-  font-size: 13px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.3;
 }
 
 .emergency-notice {
   background-color: rgba(239, 68, 68, 0.15);
   border-left: 3px solid #ef4444;
-  padding: 10px;
+  padding: 6px 8px;
   border-radius: 4px;
   color: #fca5a5;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1.3;
 }
 
 .footer-col h3 {
-  font-size: 15px;
+  font-size: 14px;
   color: #ffffff;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   border-bottom: 2px solid #84d7db;
   display: inline-block;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
 }
 
 .footer-col ul {
@@ -331,22 +333,31 @@ body {
 }
 
 .footer-col ul li {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
-.footer-col ul li a, .footer-col a {
+.footer-col ul li a, 
+.footer-col a {
   color: #94a3b8;
   text-decoration: none;
+  font-size: 12.5px;
   transition: color 0.3s ease;
 }
 
-.footer-col ul li a:hover, .footer-col a:hover {
+.footer-col ul li a:hover, 
+.footer-col a:hover {
   color: #84d7db;
+}
+
+.support-info {
+  margin-bottom: 3px;
+  color: #94a3b8;
+  font-size: 12px;
 }
 
 .footer-bottom {
   border-top: 1px solid #334155;
-  padding-top: 20px;
+  padding-top: 10px;
   max-width: 1200px;
   margin: 0 auto;
   padding-left: 20px;
@@ -356,14 +367,14 @@ body {
 
 .disclaimer-text {
   color: #94a3b8;
-  font-size: 11px;
-  line-height: 1.5;
-  margin-bottom: 12px;
+  font-size: 10.5px;
+  line-height: 1.3;
+  margin-bottom: 6px;
 }
 
 .copyright {
   color: #64748b;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* SCROLL FADE-IN */
@@ -380,12 +391,10 @@ body {
 
 /* MEDIA QUERIES PARA RESOLUCIONES CHICAS (1280x720, 1366x768) Y ZOOM */
 @media (max-width: 1024px) {
-  /* Habilitamos el botón hamburguesa cuando la pantalla o el zoom reducen el espacio horizontal disponible */
   .menu-toggle {
     display: flex;
   }
 
-  /* Transformamos el contenedor de enlaces en un menú desplegable flotante */
   .nav-links {
     position: absolute;
     top: 100%;
@@ -402,7 +411,6 @@ body {
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
   }
 
-  /* Clase dinámica que se activará desde JS para desplegar el menú */
   .nav-links.nav-active {
     max-height: 300px;
     padding: 20px 0;
@@ -417,7 +425,7 @@ body {
   }
 
   .nav-link::after {
-    display: none; /* Quitamos la línea inferior animada en móvil/zoom para mayor prolijidad */
+    display: none; 
   }
 
   .about-container {
@@ -433,13 +441,12 @@ body {
 @media (max-width: 768px) {
 .navbar-container {
     display: flex;
-    justify-content: flex-end; /* Empuja el menú hamburguesa hacia la derecha */
+    justify-content: flex-end; 
     align-items: center;
     position: relative;
-    padding: 30px 6%; /* Mismo tamaño y padding que en desktop */
+    padding: 30px 6%; 
   }
 
-    /* Comentario: Centrado absoluto real del logo respecto a toda la barra */
   .nav-logo {
     position: absolute;
     left: 50%;
@@ -448,10 +455,9 @@ body {
     margin: 0;
   }
 
-  /* Comentario: Botón hamburguesa alineado a la derecha */
   .menu-toggle {
     display: flex;
-    margin-left: auto; /* Garantiza la alineación a la derecha */
+    margin-left: auto; 
     z-index: 1001;
   }
   
