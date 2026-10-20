@@ -21,7 +21,7 @@ const healthFunctions = [
   },
   {
     id: "opcion4",
-    title: "Vitacora del paciente",
+    title: "Bitacora del paciente",
     description: "Consulta tus registros clínicos pasados, diagnósticos y observaciones profesionales.",
     placeholderImage: "img/logos/logoHealthMeCeleste.png"
   },
