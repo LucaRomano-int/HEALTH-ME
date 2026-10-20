@@ -7,9 +7,7 @@ const registerForm = document.getElementById('registerForm');
 const authTitle = document.getElementById('authTitle');
 const authSubtitle = document.getElementById('authSubtitle');
 
-// Comentario en línea arriba del código
 tabLogin.addEventListener('click', () => {
-  // Comentario en línea arriba del código
   if (tabLogin.classList.contains('active') != true) {
     tabLogin.classList.add('active');
     tabRegister.classList.remove('active');
@@ -23,9 +21,7 @@ tabLogin.addEventListener('click', () => {
   }
 });
 
-// Comentario en línea arriba del código
 tabRegister.addEventListener('click', () => {
-  // Comentario en línea arriba del código
   if (tabRegister.classList.contains('active') != true) {
     tabRegister.classList.add('active');
     tabLogin.classList.remove('active');
@@ -39,12 +35,10 @@ tabRegister.addEventListener('click', () => {
   }
 });
 
-// Comentario en línea arriba del código
 document.querySelectorAll('.toggle-password').forEach(button => {
   button.addEventListener('click', () => {
     const targetId = button.getAttribute('data-target');
     const input = document.getElementById(targetId);
-    // Comentario en línea arriba del código
     const isPassword = input.getAttribute('type') === 'password';
     input.setAttribute('type', isPassword ? 'text' : 'password');
     button.textContent = isPassword ? 'Ocultar' : 'Ver';
@@ -72,7 +66,6 @@ loginForm.addEventListener('submit', (e) => {
     });
 });
 
-// Envía el formulario de registro a su endpoint PHP
 registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
