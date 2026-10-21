@@ -57,6 +57,7 @@ loginForm.addEventListener('submit', (e) => {
     .then((datos) => {
       if (datos.ok) {
         alert('¡Inicio de sesión exitoso!');
+        window.location.href = 'user.php'
       } else {
         alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
       }
