@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthMe - Inicio</title>
+    <link
+      rel="stylesheet"
+      href="health-me-frontend\src\assets\css\styles.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR (Inicia oculta y aparece al scrollear) -->
+    <header class="navbar navbar-hidden" id="main-navbar">
+      <div class="navbar-container">
+        <div class="nav-logo">
+          <a href="health-me-frontend\src\views\user.php">
+            <!-- Logo principal de la barra de navegación -->
+            <img
+              src="health-me-frontend\public\logos\logoHealthMeCeleste.png"
+              alt="Logo HealthMe"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <!-- BOTÓN MENÚ HAMBURGUESA (Visible en pantallas chicas y con zoom alto) -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="#home" class="nav-link">HOME</a>
+          <a
+            href="health-me-frontend\src\views\login.html"
+            class="nav-link btn-login"
+            >INICIAR SESIÓN</a
+          >
+          <a href="health-me-frontend\src\views\contact.html" class="nav-link"
+            >CONTACTO</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO SECTION (100vh - Pantalla Completa) -->
+    <section id="home" class="hero-section">
+      <div class="hero-content">
+        <img
+          src="health-me-frontend\public\logos\logoHealthMeBlanco.png"
+          alt="Hero Logo HealthMe"
+          class="hero-logo"
+        />
+        <a href="#quienes-somos" class="btn-hero-more">Saber más</a>
+      </div>
+    </section>
+
+    <!-- ABOUT US / QUIÉNES SOMOS -->
+    <section id="quienes-somos" class="about-section">
+      <h2 class="section-title">QUIÉNES SOMOS</h2>
+      <div class="about-container">
+        <div class="about-text-box">
+          <p>
+            En HealthMe nos dedicamos a brindar soluciones digitales integrales
+            para la salud. Facilitamos el acceso a la gestión médica, conectando
+            profesionales y pacientes de forma ágil, segura y confiable.
+          </p>
+        </div>
+        <div class="about-img-box">
+          <img
+            src="health-me-frontend\public\renders\renderAppPlataforma.jpg"
+            alt="Sobre nosotros"
+            class="render-img"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD / ENLACES SECTION -->
+    <section class="download-section">
+      <div class="download-container">
+        <h2>DESCARGA NUESTRA APLICACIÓN</h2>
+        <p class="download-subtitle">
+          Accede a tus registros médicos e información de salud desde cualquier
+          dispositivo.
+        </p>
+        <div class="download-buttons">
+          <a href="#" class="btn-download">Google Play Store</a>
+          <a href="#" class="btn-download">Descarga Escritorio</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img
+            src="health-me-frontend\public\logos\logoNameHealthMeBlanco.png"
+            alt="HealthMe Logo"
+            class="footer-logo"
+          />
+          <p class="footer-desc">
+            Plataforma digital para la gestión y seguimiento integral de la
+            salud.
+          </p>
+          <div class="emergency-notice">
+            <strong>Emergencias médicas:</strong> Llame al 911 o acuda al centro
+            de salud más cercano.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Navegación</h3>
+          <ul>
+            <li>
+              <a href="health-me-frontend\src\views\index.html">Inicio</a>
+            </li>
+            <li><a href="#quienes-somos">Quiénes Somos</a></li>
+            <li>
+              <a href="health-me-frontend\src\views\contact.html"
+                >Habla con nosotros</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Marco Legal</h3>
+          <ul>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Consentimiento Digital</a></li>
+            <li><a href="#">Derechos del Paciente</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Soporte</h3>
+          <p class="support-info">
+            Email:
+            <a href="mailto:soporte@healthme.com">soporte@healthme.com</a>
+          </p>
+          <p class="support-info">Horario: 24 hs</p>
+          <p class="support-info">Atención al Usuario / Reclamos</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="disclaimer-text">
+          <strong>Aviso Médico Importante:</strong> La información provista no
+          sustituye el diagnóstico o consejo médico profesional. Consulte
+          siempre con un profesional matriculado.
+        </p>
+        <div class="copyright">
+          <p>&copy; 2026 HealthMe. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CONTROLADOR PRINCIPAL -->
+    <script src="health-me-frontend\src\assets\js\main.js"></script>
+  </body>
+</html>

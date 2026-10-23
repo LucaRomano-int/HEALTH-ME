@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthMe - Contacto</title>
+    <link
+      rel="stylesheet"
+      href="health-me-frontend\src\assets\css\styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="health-me-frontend\src\assets\css\contact.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar" id="main-navbar">
+      <div class="navbar-container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <img
+              src="health-me-frontend\public\logos\logoHealthMeCeleste.png"
+              alt="Logo HealthMe"
+              class="logo-img"
+            />
+          </a>
+        </div>
+
+        <!-- BOTÓN MENÚ HAMBURGUESA (Visible en pantallas chicas y con zoom alto) -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <nav class="nav-links" id="nav-links">
+          <a href="health-me-frontend\src\views\index.html" class="nav-link"
+            >HOME</a
+          >
+          <a
+            href="health-me-frontend\src\views\login.html"
+            class="nav-link btn-login"
+            >INICIAR SESIÓN</a
+          >
+          <a href="health-me-frontend\src\views\contact.html" class="nav-link"
+            >CONTACTO</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTACT SECTION -->
+    <main class="contact-main-container">
+      <div class="contact-split-grid">
+        <!-- Columna Izquierda: Formulario de Contacto -->
+        <div class="contact-form-area">
+          <div class="contact-header-text">
+            <h1>Habla con nosotros</h1>
+            <p>
+              ¿Tienes dudas, sugerencias o necesitas asistencia? Completa el
+              formulario y nos pondremos en contacto.
+            </p>
+          </div>
+
+          <form class="health-contact-form" id="contactForm">
+            <div class="form-row-dual">
+              <div class="form-group">
+                <!-- Comentario en línea arriba del código -->
+                <label for="name">Nombre</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <!-- Comentario en línea arriba del código -->
+                <label for="lastname">Apellido</label>
+                <input
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  placeholder="Tu apellido"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <!-- Comentario en línea arriba del código -->
+              <label for="email">Correo Electrónico</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="ejemplo@correo.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <!-- Comentario en línea arriba del código -->
+              <label for="motivo">Motivo del Contacto</label>
+              <select id="motivo" name="motivo" required>
+                <option value="" disabled selected>
+                  Seleccione una opción
+                </option>
+                <option value="soporte">Soporte Técnico / Aplicación</option>
+                <option value="consultas">Consultas Médicas Generales</option>
+                <option value="privacidad">
+                  Privacidad y Datos Personales
+                </option>
+                <option value="otros">Otros Motivos</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <!-- Comentario en línea arriba del código -->
+              <label for="mensaje">Mensaje o Detalle</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="4"
+                placeholder="Escribe tu mensaje aquí..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-health-pill">
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+
+        <!-- Columna Derecha: Logo Flotante Libre (Sin caja contenedora) -->
+        <div class="contact-brand-area">
+          <div class="brand-floating-wrapper">
+            <div class="brand-glow-bg"></div>
+            <img
+              src="health-me-frontend\public\logos\logoHealthMeCeleste.png"
+              alt="Isotipo HealthMe"
+              class="floating-brand-logo"
+            />
+            <span class="brand-subtitle">Estamos para ayudarte 24/7</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <img
+            src="health-me-frontend\public\logos\logoNameHealthMeBlanco.png"
+            alt="HealthMe Logo"
+            class="footer-logo"
+          />
+          <p class="footer-desc">
+            Plataforma digital para la gestión y seguimiento integral de la
+            salud.
+          </p>
+          <div class="emergency-notice">
+            <strong>Emergencias médicas:</strong> Llame al 911 o acuda al centro
+            de salud más cercano.
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Navegación</h3>
+          <ul>
+            <li>
+              <a href="health-me-frontend\src\views\index.html">Inicio</a>
+            </li>
+            <li>
+              <a href="health-me-frontend\src\views\index.html#quienes-somos"
+                >Quiénes Somos</a
+              >
+            </li>
+            <li>
+              <a href="health-me-frontend\src\views\contact.html"
+                >Habla con nosotros</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Marco Legal</h3>
+          <ul>
+            <li><a href="#">Términos y Condiciones</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Consentimiento Digital</a></li>
+            <li><a href="#">Derechos del Paciente</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Soporte</h3>
+          <p class="support-info">
+            Email:
+            <a href="mailto:soporte@healthme.com">soporte@healthme.com</a>
+          </p>
+          <p class="support-info">Horario: 24 hs</p>
+          <p class="support-info">Atención al Usuario / Reclamos</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="disclaimer-text">
+          <strong>Aviso Médico Importante:</strong> La información provista no
+          sustituye el diagnóstico o consejo médico profesional. Consulte
+          siempre con un profesional matriculado.
+        </p>
+        <div class="copyright">
+          <p>&copy; 2026 HealthMe. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Archivo JavaScript separado -->
+    <script src="health-me-frontend\src\assets\js\contact.js"></script>
+  </body>
+</html>

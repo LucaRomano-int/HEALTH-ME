@@ -1,0 +1,247 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* DESPLAZAMIENTO SUAVE GLOBAL */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #333333;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- SECCIÓN CONTACTO ESPECÍFICA --- */
+.contact-main-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 20px 80px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #edf7f7 100%);
+  width: 100%;
+}
+
+.contact-split-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: 60px;
+}
+
+.contact-form-area {
+  flex: 1;
+  max-width: 520px;
+  padding: 20px 0;
+}
+
+.contact-header-text {
+  margin-bottom: 30px;
+}
+
+.contact-header-text h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.contact-header-text p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.health-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row-dual {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row-dual .form-group {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 14px;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #84d7db;
+  box-shadow: 0 0 0 4px rgba(132, 215, 219, 0.15);
+}
+
+.btn-health-pill {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 42px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #5cb8bc;
+  border: 3px solid #5cb8bc;
+  border-radius: 50px;
+  text-align: center;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(92, 184, 188, 0.3);
+  margin-top: 10px;
+}
+
+.btn-health-pill:hover {
+  background-color: #489b9f;
+  border-color: #489b9f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(92, 184, 188, 0.45);
+}
+
+/* COLUMNA DERECHA DEL LOGO */
+.contact-brand-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.brand-floating-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+}
+
+.brand-glow-bg {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(143, 214, 218, 0.35) 0%, rgba(92,184,188,0.1) 60%, transparent 80%);
+  border-radius: 50%;
+  z-index: 1;
+  filter: blur(20px);
+}
+
+.floating-brand-logo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  animation: floatEffect 3s ease-in-out infinite;
+}
+
+.brand-subtitle {
+  margin-top: 25px;
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  font-weight: 700;
+  color: #4a5568;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+@keyframes floatEffect {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .contact-main-container {
+    padding: 80px 15px 40px 15px;
+  }
+
+  .contact-split-grid {
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  .contact-brand-area {
+    margin-bottom: 0;
+  }
+
+  .brand-floating-wrapper {
+    padding: 30px 10px;
+  }
+
+  .floating-brand-logo {
+    max-width: 240px;
+  }
+
+  .brand-subtitle {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .contact-form-area {
+    width: 100%;
+    max-width: 100%;
+    margin-top: -50px;
+  }
+
+  .brand-glow-bg {
+    width: 200px;
+    height: 200px;
+  }
+
+  .form-row-dual {
+    flex-direction: column;
+    gap: 18px;
+  }
+}

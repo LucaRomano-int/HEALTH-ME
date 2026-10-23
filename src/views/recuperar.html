@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthMe - Recuperar contraseña</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="login-main-container">
+    <div class="login-form-area">
+      <h1>Recuperar contraseña</h1>
+
+      <form class="health-login-form active" id="formPedir">
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit" class="btn-health-pill">Enviar instrucciones</button>
+      </form>
+
+      <form class="health-login-form" id="formNueva">
+        <input type="hidden" name="token" id="token">
+        <div class="form-group">
+          <label>Nueva contraseña</label>
+          <input type="password" name="password_nueva" required>
+        </div>
+        <div class="form-group">
+          <label>Repetir contraseña</label>
+          <input type="password" name="password_confirmar" required>
+        </div>
+        <button type="submit" class="btn-health-pill">Cambiar contraseña</button>
+      </form>
+
+      <p id="msg" role="status"></p>
+      <a href="login.html">Volver al inicio de sesión</a>
+    </div>
+  </main>
+
+  <script>
+    const token = new URLSearchParams(location.search).get('token');
+    const formPedir = document.getElementById('formPedir');
+    const formNueva = document.getElementById('formNueva');
+    const msg = document.getElementById('msg');
+
+    if (token) {
+      document.getElementById('token').value = token;
+      formPedir.classList.remove('active');
+      formNueva.classList.add('active');
+    }
+
+    function enviar(form, url, onOk) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(url, { method: 'POST', body: new FormData(form) })
+          .then(r => r.json())
+          .then(d => {
+            msg.textContent = d.mensaje || (d.ok ? 'Listo.' : 'Ocurrió un error.');
+            if (d.ok && onOk) onOk();
+          })
+          .catch(() => { msg.textContent = 'No pudimos conectar con el servidor.'; });
+      });
+    }
+
+    enviar(formPedir, 'php/solicitar_recuperacion.php');
+    enviar(formNueva, 'php/restablecer_password.php', () => {
+      msg.textContent = 'Contraseña actualizada. Ya puedes iniciar sesión.';
+      setTimeout(() => location.href = 'login.html', 2000);
+    });
+  </script>
+</body>
+</html>
