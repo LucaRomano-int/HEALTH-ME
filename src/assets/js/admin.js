@@ -1,6 +1,7 @@
 const tbody = document.querySelector('#tablaUsuarios tbody');
 const msg = document.getElementById('msgAdmin');
 
+// Reemplaza con tu URL real de InfinityFree
 const API_URL = "https://health-me.infinityfreeapp.com";
 
 function celda(texto) {
@@ -10,7 +11,10 @@ function celda(texto) {
 }
 
 function cargarUsuarios() {
-  fetch('${API_URL}/api/admin/usuarios_listar.php')
+  // Usando backticks (`` ` ``) para que ${API_URL} funcione
+  fetch(`${API_URL}/api/admin/usuarios_listar.php`, {
+    credentials: 'include' // Importante si manejas sesiones cruzadas
+  })
     .then(r => r.json())
     .then(d => {
       if (!d.ok) { msg.textContent = d.mensaje; return; }
@@ -45,7 +49,12 @@ function cambiarEstado(id, activo) {
   datos.append('id_usuario', id);
   datos.append('activo', activo);
 
-  fetch('${API_URL}/api/admin/usuario_estado.php', { method: 'POST', body: datos })
+  // Usando backticks (`` ` ``)
+  fetch(`${API_URL}/api/admin/usuario_estado.php`, { 
+    method: 'POST', 
+    body: datos,
+    credentials: 'include' 
+  })
     .then(r => r.json())
     .then(d => {
       msg.textContent = d.ok ? 'Usuario actualizado.' : (d.mensaje || 'Error.');

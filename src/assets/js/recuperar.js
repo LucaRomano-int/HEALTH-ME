@@ -30,8 +30,8 @@ function enviar(form, url, onOk) {
 
 // Nota: Como GitHub Pages es estático, recuerda que las rutas de PHP 
 // requerirán un backend real si se despliega fuera de un entorno local con PHP.
-enviar(formPedir, '${API_URL}/api/solicitar_recuperacion.php');
-enviar(formNueva, '${API_URL}/api/restablecer_password.php', () => {
+enviar(formPedir, `${API_URL}/api/solicitar_recuperacion.php`);
+enviar(formNueva, `${API_URL}/api/restablecer_password.php`, () => {
   msg.textContent = "Contraseña actualizada. Ya puedes iniciar sesión.";
   setTimeout(() => (location.href = "login.html"), 2000);
 });

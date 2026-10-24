@@ -51,7 +51,7 @@ document.querySelectorAll('.toggle-password').forEach(button => {
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  fetch('${API_URL}/api/login_usuario.php', {
+  fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
     body: new FormData(loginForm)
   })
@@ -59,7 +59,7 @@ loginForm.addEventListener('submit', (e) => {
     .then((datos) => {
       if (datos.ok) {
         alert('¡Inicio de sesión exitoso!');
-        window.location.href = '${API_URL}/views/user.php';
+        window.location.href = `${API_URL}/user.php`;
       } else {
         alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
       }
@@ -72,7 +72,7 @@ loginForm.addEventListener('submit', (e) => {
 registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  fetch('${API_URL}/api/registrar_usuario.php', {
+  fetch(`${API_URL}/api/registrar_usuario.php`, {
     method: 'POST',
     body: new FormData(registerForm)
   })
