@@ -198,14 +198,14 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
     </footer>
 
     <!-- MÓDULOS DE CADA APARTADO DE USUARIO -->
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/signosVitales.js"></script>
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/recordatorios.js"></script>
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/medicamentos.js"></script>
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/grupoPaciente.js"></script>
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/dashboard.js"></script>
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/modules/bitacora.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/signosVitales.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/recordatorios.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/medicamentos.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/grupoPaciente.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/dashboard.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/bitacora.js"></script>
 
     <!-- SCRIPT PRINCIPAL DE CONTROL -->
-    <script src="https://lucaromano-int.github.io/HEALTH-ME/js/user.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/user.js"></script>
   </body>
 </html>
