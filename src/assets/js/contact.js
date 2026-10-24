@@ -13,7 +13,7 @@ contactForm.addEventListener('submit', (e) => {
   if (name != '' && lastname != '' && email != '' && motivo != '') {
     
     // Envía el formulario a guardar_contacto.php para guardarlo en consulta_contacto
-    fetch('${API_URL}/guardar_contacto.php', {
+    fetch(`${API_URL}/guardar_contacto.php`, {
       method: 'POST',
       body: new FormData(contactForm)
     })
