@@ -459,3 +459,325 @@ body {
     min-height: 380px;
   }
 }
+
+/* --- INVENTARIO DE MEDICAMENTOS --- */
+.inventario-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Alertas dentro del panel */
+.inv-alertas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inv-alerta {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  border-left: 6px solid;
+}
+
+.inv-alerta-poco {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #f59e0b;
+}
+
+.inv-alerta-agotado {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #ef4444;
+}
+
+/* Formulario */
+.inv-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.inv-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 150px;
+}
+
+.inv-field:first-child {
+  flex-basis: 220px;
+}
+
+.inv-field span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.inv-field input,
+.inv-restock input {
+  padding: 10px 12px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #334155;
+  background: #ffffff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inv-field input:focus,
+.inv-restock input:focus {
+  border-color: #84d7db;
+  box-shadow: 0 0 0 3px rgba(132, 215, 219, 0.2);
+}
+
+.inv-btn {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid #5cb8bc;
+  transition: all 0.2s ease;
+}
+
+.inv-btn-primary {
+  background-color: #5cb8bc;
+  color: #ffffff;
+}
+
+.inv-btn-primary:hover {
+  background-color: #489b9f;
+  border-color: #489b9f;
+}
+
+.inv-btn-ghost {
+  background: transparent;
+  color: #5cb8bc;
+}
+
+.inv-btn-ghost:hover {
+  background: #edf7f7;
+}
+
+.inv-mensaje {
+  font-size: 14px;
+  font-weight: 600;
+  color: #10b981;
+  min-height: 18px;
+  margin: -6px 0 0;
+}
+
+.inv-mensaje-error {
+  color: #ef4444;
+}
+
+/* Tarjetas */
+.inv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.inv-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #64748b;
+  padding: 30px 10px;
+}
+
+.inv-card {
+  background: #ffffff;
+  border: 2px solid #5cb8bc;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(92, 184, 188, 0.15);
+}
+
+.inv-card.inv-poco {
+  border-color: #f59e0b;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+}
+
+.inv-card.inv-agotado {
+  border-color: #ef4444;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+.inv-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.inv-card-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  overflow-wrap: anywhere;
+}
+
+.inv-card-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.inv-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  transition: transform 0.2s ease;
+}
+
+.inv-icon-btn:hover {
+  transform: scale(1.15);
+}
+
+.inv-card-count {
+  font-size: 38px;
+  font-weight: 800;
+  color: #5a6578;
+}
+
+.inv-card-count small {
+  font-size: 16px;
+}
+
+.inv-bar {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.inv-bar-fill {
+  height: 100%;
+  background: #10b981;
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.inv-poco .inv-bar-fill {
+  background: #f59e0b;
+}
+
+.inv-agotado .inv-bar-fill {
+  background: #ef4444;
+}
+
+.inv-status {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #10b981;
+}
+
+.inv-poco .inv-status {
+  color: #f59e0b;
+}
+
+.inv-agotado .inv-status {
+  color: #ef4444;
+}
+
+.inv-detail {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.inv-restock {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Globito en el botón del menú */
+.inv-badge {
+  display: inline-block;
+  min-width: 22px;
+  margin-left: 10px;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+/* Cartel flotante al entrar */
+.inv-toast {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 420px;
+  padding: 14px 16px;
+  background: #fffbeb;
+  color: #92400e;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.inv-toast button {
+  background: #f59e0b;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.inv-toast .inv-toast-close {
+  background: transparent;
+  color: #92400e;
+  font-size: 20px;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .inv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inv-toast {
+    top: 70px;
+    right: 12px;
+    left: 12px;
+    max-width: none;
+  }
+}

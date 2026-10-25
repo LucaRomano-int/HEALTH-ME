@@ -204,6 +204,7 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/grupoPaciente.js"></script>
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/dashboard.js"></script>
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/bitacora.js"></script>
+    <script src="health-me-frontend/src/assets/js/modules/inventario.js"></script>
 
     <!-- SCRIPT PRINCIPAL DE CONTROL -->
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/user.js"></script>

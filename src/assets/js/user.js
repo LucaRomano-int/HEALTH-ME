@@ -36,6 +36,13 @@ const healthFunctions = [
     title: "Gestión de medicamentos",
     description: "Administración y seguimiento de los medicamentos recetados, incluyendo dosis, horarios y recordatorios para garantizar la adherencia al tratamiento.",
     placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+  },
+  {
+  id: "opcion7",
+  title: "Inventario de medicamentos",
+  description: "Controlá cuántas pastillas te quedan y recibí un aviso cuando sea momento de comprar más.",
+  isCustomModule: true,
+  renderFunctionName: "renderInventarioModule"
   }
 ];
 
