@@ -1,7 +1,7 @@
 <?php
 // Nota interna: este archivo va en la raíz del proyecto (junto a login.html), no dentro de /php.
 
-require_once __DIR__ . '/php/verificar_sesion.php'; // archivo "portero"
+require_once __DIR__ . '/api/verificar_sesion.php'; // archivo "portero"
 
 // Si llegó hasta acá, hay sesión iniciada
 $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], ENT_QUOTES, 'UTF-8');
@@ -13,8 +13,8 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthMe - Panel de Usuario</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="https://lucaromano-int.github.io/HEALTH-ME/src/assets/css/styles.css">
+    <link rel="stylesheet" href="https://lucaromano-int.github.io/HEALTH-ME/src/assets/css/user.css">
   </head>
   <body>
 
@@ -23,7 +23,7 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
       <div class="navbar-container">
         <div class="nav-logo">
           <a href="https://lucaromano-int.github.io/HEALTH-ME/index.html">
-            <img src="img/logos/logoHealthMeCeleste.png" alt="Logo HealthMe" class="logo-img"> 
+            <img src="https://lucaromano-int.github.io/HEALTH-ME/public/logos/logoHealthMeCeleste.png" alt="Logo HealthMe" class="logo-img"> 
           </a>
         </div>
 
@@ -125,7 +125,7 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
         <div id="listaInvitaciones"></div>
       </section>
 
-      <script src="health-me-frontend\src\assets\js\acceso-compartido.js"></script>
+      <script src="https://lucaromano-int.github.io/HEALTH-ME\src\assets\js\acceso-compartido.js"></script>
     </main>
 
     <!-- FOOTER -->
@@ -150,7 +150,7 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
         <div class="footer-container">
           
           <div class="footer-col">
-            <img src="img/logos/logoNameHealthMeBlanco.png" alt="HealthMe Logo" class="footer-logo">
+            <img src="https://lucaromano-int.github.io/HEALTH-ME/public/logos/logoNameHealthMeBlanco.png" alt="HealthMe Logo" class="footer-logo">
             <p class="footer-desc">Plataforma digital para la gestión y seguimiento integral de la salud.</p>
             <div class="emergency-notice">
               <strong>En caso de emergencia médica inmediata, comuníquese al 911 o acuda al centro asistencial más cercano.</strong>
@@ -204,7 +204,7 @@ $nombre = htmlspecialchars($_SESSION['nombre'] . ' ' . $_SESSION['apellido'], EN
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/grupoPaciente.js"></script>
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/dashboard.js"></script>
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/bitacora.js"></script>
-    <script src="health-me-frontend/src/assets/js/modules/inventario.js"></script>
+    <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/modules/inventario.js"></script>
 
     <!-- SCRIPT PRINCIPAL DE CONTROL -->
     <script src="https://lucaromano-int.github.io/HEALTH-ME/src/assets/js/user.js"></script>
