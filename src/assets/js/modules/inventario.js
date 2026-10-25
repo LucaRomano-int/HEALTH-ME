@@ -3,9 +3,8 @@
     cuando alcanzan para pocos días. El stock NO se descuenta con un cron:
     se calcula al vuelo a partir de (stock_base, fecha_base, consumo diario). */
 
-/* Ruta al endpoint. Usar la misma base que el resto de los fetch del proyecto
-   (si el frontend está en otro host que el PHP, poner la URL completa). */
-const INVENTARIO_API = "api/inventario.php";
+const API_URL = "https://health-me.infinityfreeapp.com";
+const INVENTARIO_API = `${API_URL}/api/inventario.php`;
 const INVENTARIO_UMBRAL_DEFECTO = 3; /* días de aviso por defecto */
 
 /* ---------- LÓGICA DE CÁLCULO (sin DOM, fácil de probar) ---------- */
@@ -63,7 +62,7 @@ function inventarioPeticion(accion, datos) {
     return fetch(INVENTARIO_API, {
         method: "POST",
         body: formData,
-        credentials: "include" /* manda la cookie de sesión también entre hosts distintos */
+        credentials: "include" /* Manda la cookie de sesión entre hosts distintos (GitHub -> InfinityFree) */
     }).then(function (respuesta) {
         return respuesta.json();
     });
