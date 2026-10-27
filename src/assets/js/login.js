@@ -47,11 +47,10 @@ document.querySelectorAll('.toggle-password').forEach(button => {
   });
 });
 
-// Envía el formulario de inicio de sesión a su endpoint PHP
+// Envía el formulario de inicio de sesión a su endpoint PHP (Versión limpia y única)
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  // Convertir los datos del formulario a un objeto plano
   const formData = new FormData(loginForm);
   const datos = Object.fromEntries(formData.entries());
 
@@ -65,12 +64,12 @@ loginForm.addEventListener('submit', (e) => {
     body: JSON.stringify(datos)
   })
     .then((respuesta) => respuesta.json())
-    .then((resultado) => {
-      if (resultado.ok) {
+    .then((datosRespuesta) => {
+      if (datosRespuesta.ok) {
         alert('¡Inicio de sesión exitoso!');
         window.location.href = `${API_URL}/user.php`;
       } else {
-        alert(resultado.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
+        alert(datosRespuesta.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
       }
     })
     .catch((error) => {
@@ -79,29 +78,24 @@ loginForm.addEventListener('submit', (e) => {
     });
 });
 
-// Envía el formulario de inicio de sesión a su endpoint PHP
-loginForm.addEventListener('submit', (e) => {
+registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const formData = new FormData(loginForm);
-  const datosObjeto = Object.fromEntries(formData.entries());
-
-  fetch(`${API_URL}/api/login_usuario.php`, {
+  fetch(`${API_URL}/api/registrar_usuario.php`, {
     method: 'POST',
-    credentials: 'include',
+    credentials: 'include', // <--- ¡Vital para peticiones cruzadas!
     headers: {
-      'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
     },
-    body: JSON.stringify(datosObjeto)
+    body: new FormData(registerForm)
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       if (datos.ok) {
-        alert('¡Inicio de sesión exitoso!');
-        window.location.href = `${API_URL}/user.php`;
+        alert('¡Cuenta creada con éxito! Ya puedes iniciar sesión.');
+        registerForm.reset();
       } else {
-        alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
+        alert(datos.mensaje || 'No pudimos crear la cuenta. Intenta nuevamente.');
       }
     })
     .catch(() => {
