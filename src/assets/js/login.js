@@ -53,6 +53,10 @@ loginForm.addEventListener('submit', (e) => {
 
   fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
+    credentials: 'include', // <--- ¡Vital para que la cookie de sesión viaje entre dominios!
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest' // <--- Necesario para pasar la validación requerirAjax()
+    },
     body: new FormData(loginForm)
   })
     .then((respuesta) => respuesta.json())
@@ -74,6 +78,10 @@ registerForm.addEventListener('submit', (e) => {
 
   fetch(`${API_URL}/api/registrar_usuario.php`, {
     method: 'POST',
+    credentials: 'include', // <--- ¡Vital para peticiones cruzadas!
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest'
+    },
     body: new FormData(registerForm)
   })
     .then((respuesta) => respuesta.json())
