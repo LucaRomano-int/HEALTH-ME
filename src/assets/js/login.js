@@ -79,24 +79,29 @@ loginForm.addEventListener('submit', (e) => {
     });
 });
 
-registerForm.addEventListener('submit', (e) => {
+// Envía el formulario de inicio de sesión a su endpoint PHP
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  fetch(`${API_URL}/api/registrar_usuario.php`, {
+  const formData = new FormData(loginForm);
+  const datosObjeto = Object.fromEntries(formData.entries());
+
+  fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
-    credentials: 'include', // <--- ¡Vital para peticiones cruzadas!
+    credentials: 'include',
     headers: {
+      'Content-Type': 'application/json',
       'X-Requested-With': 'XMLHttpRequest'
     },
-    body: new FormData(registerForm)
+    body: JSON.stringify(datosObjeto)
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       if (datos.ok) {
-        alert('¡Cuenta creada con éxito! Ya puedes iniciar sesión.');
-        registerForm.reset();
+        alert('¡Inicio de sesión exitoso!');
+        window.location.href = `${API_URL}/user.php`;
       } else {
-        alert(datos.mensaje || 'No pudimos crear la cuenta. Intenta nuevamente.');
+        alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
       }
     })
     .catch(() => {
