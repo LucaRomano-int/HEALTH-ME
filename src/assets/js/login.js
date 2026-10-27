@@ -51,24 +51,30 @@ document.querySelectorAll('.toggle-password').forEach(button => {
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  // Convertir los datos del formulario a un objeto plano
+  const formData = new FormData(loginForm);
+  const datos = Object.fromEntries(formData.entries());
+
   fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
-    credentials: 'include', // <--- ¡Vital para que la cookie de sesión viaje entre dominios!
+    credentials: 'include', // Vital para que la cookie de sesión viaje entre dominios
     headers: {
-      'X-Requested-With': 'XMLHttpRequest' // <--- Necesario para pasar la validación requerirAjax()
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
     },
-    body: new FormData(loginForm)
+    body: JSON.stringify(datos)
   })
     .then((respuesta) => respuesta.json())
-    .then((datos) => {
-      if (datos.ok) {
+    .then((resultado) => {
+      if (resultado.ok) {
         alert('¡Inicio de sesión exitoso!');
         window.location.href = `${API_URL}/user.php`;
       } else {
-        alert(datos.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
+        alert(resultado.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
       }
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error('Error de conexión:', error);
       alert('No pudimos conectar con el servidor. Intenta nuevamente.');
     });
 });
