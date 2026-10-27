@@ -17,7 +17,8 @@ const healthFunctions = [
     id: "opcion3",
     title: "Fechas y recordatorios",
     description: "Una interfaz visual que reúne, procesa y muestra información relevante sobre la salud del paciente, permitiendo un monitoreo rápido y eficiente de su estado en un lapso de tiempo esablecido.",
-    placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+    isCustomModule: true,
+    placeholderImage: "renderRecordatoriosModule"
   },
   {
     id: "opcion4",
