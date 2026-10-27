@@ -15,6 +15,10 @@ contactForm.addEventListener('submit', (e) => {
     // Envía el formulario a guardar_contacto.php para guardarlo en consulta_contacto
     fetch(`${API_URL}/guardar_contacto.php`, {
       method: 'POST',
+      credentials: 'include', // <--- ¡Vital para peticiones cruzadas!
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest' // <--- Necesario para pasar la validación requerirAjax()
+      },
       body: new FormData(contactForm)
     })
       .then((respuesta) => respuesta.json())
@@ -41,7 +45,6 @@ if (menuToggle != null && navLinks != null) {
     navLinks.classList.toggle('nav-active');
   });
 
-  // Comentario: Cierra el menú automáticamente al hacer clic en alguna opción
   const links = navLinks.querySelectorAll('.nav-link');
   links.forEach(link => {
     link.addEventListener('click', () => {
