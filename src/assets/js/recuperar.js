@@ -15,7 +15,14 @@ if (token) {
 function enviar(form, url, onOk) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    fetch(url, { method: "POST", body: new FormData(form) })
+    fetch(url, { 
+      method: "POST", 
+      credentials: 'include', // <--- ¡Vital para mantener la sesión segura!
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest' // <--- Necesario para pasar la validación requerirAjax()
+      },
+      body: new FormData(form) 
+    })
       .then((r) => r.json())
       .then((d) => {
         msg.textContent =
@@ -28,8 +35,6 @@ function enviar(form, url, onOk) {
   });
 }
 
-// Nota: Como GitHub Pages es estático, recuerda que las rutas de PHP 
-// requerirán un backend real si se despliega fuera de un entorno local con PHP.
 enviar(formPedir, `${API_URL}/api/solicitar_recuperacion.php`);
 enviar(formNueva, `${API_URL}/api/restablecer_password.php`, () => {
   msg.textContent = "Contraseña actualizada. Ya puedes iniciar sesión.";
@@ -45,7 +50,6 @@ if (menuToggle != null && navLinks != null) {
     navLinks.classList.toggle('nav-active');
   });
 
-  // Comentario: Cierra el menú automáticamente al hacer clic en alguna opción
   const links = navLinks.querySelectorAll('.nav-link');
   links.forEach(link => {
     link.addEventListener('click', () => {
