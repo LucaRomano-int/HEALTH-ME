@@ -56,10 +56,10 @@ loginForm.addEventListener('submit', (e) => {
 
   fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
-    credentials: 'include', // Vital para que la cookie de sesión viaje entre dominios
+    credentials: 'include',
     headers: {
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest'
+      'Content-Type': 'application/json'
+      // Quitamos temporalmente 'X-Requested-With' por si InfinityFree lo bloquea
     },
     body: JSON.stringify(datos)
   })
