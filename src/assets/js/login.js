@@ -56,10 +56,10 @@ loginForm.addEventListener('submit', (e) => {
 
   fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
+    mode: 'cors', // <--- Añadir esto explícitamente para peticiones cruzadas
     credentials: 'include',
     headers: {
-      'Content-Type': 'application/json'
-      // Quitamos temporalmente 'X-Requested-With' por si InfinityFree lo bloquea
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(datos)
   })
@@ -77,7 +77,6 @@ loginForm.addEventListener('submit', (e) => {
       alert('No pudimos conectar con el servidor. Intenta nuevamente.');
     });
 });
-
 registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
