@@ -4,7 +4,10 @@ const healthFunctions = [
     id: "opcion1",
     title: "Datos del grupo y del paciente",
     description: "Información detallada sobre el grupo y el paciente.",
-    placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+    isCustomModule: true,
+    renderFunctionName: "renderGrupoPacienteModule",
+    // Módulos extra que se muestran dentro del mismo panel, debajo del principal
+    extraRenderFunctionNames: ["renderAccesoCompartidoModule"]
   },
   {
     id: "opcion2",
@@ -16,34 +19,52 @@ const healthFunctions = [
   {
     id: "opcion3",
     title: "Fechas y recordatorios",
-    description: "Una interfaz visual que reúne, procesa y muestra información relevante sobre la salud del paciente, permitiendo un monitoreo rápido y eficiente de su estado en un lapso de tiempo esablecido.",
+    description: "Una interfaz visual que reúne, procesa y muestra información relevante sobre la salud del paciente, permitiendo un monitoreo rápido y eficiente de su estado en un lapso de tiempo establecio.",
     isCustomModule: true,
-    placeholderImage: "renderRecordatoriosModule"
+    renderFunctionName: "renderRecordatoriosModule"
   },
   {
     id: "opcion4",
     title: "Bitacora del paciente",
     description: "Consulta tus registros clínicos pasados, diagnósticos y observaciones profesionales.",
-    placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+    isCustomModule: true,
+    renderFunctionName: "renderBitacoraModule"
   },
   {
     id: "opcion5",
     title: "Dashboard",
-    description: "Una interfaz visual que reúne, procesa y muestra información relevante sobre la salud del paciente, permitiendo un monitoreo rápido y eficiente de su estado en un lapso de tiempo esablecido.",
-    placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+    description: "Una interfaz visual que reúne, procesa y muestra información relevante sobre la salud del paciente, permitiendo un monitoreo rápido y eficiente de su estado en un lapso de tiempo establecio.",
+    isCustomModule: true,
+    renderFunctionName: "renderDashboardModule"
   },
   {
     id: "opcion6",
-    title: "Gestión de medicamentos",
-    description: "Administración y seguimiento de los medicamentos recetados, incluyendo dosis, horarios y recordatorios para garantizar la adherencia al tratamiento.",
-    placeholderImage: "health-me-frontend\\public\\logos\\logoHealthMeCeleste.png"
+    title: "Inventario de medicamentos",
+    description: "Controlá cuántas pastillas te quedan y recibí un aviso cuando sea momento de comprar más.",
+    isCustomModule: true,
+    renderFunctionName: "renderInventarioModule"
   },
   {
-  id: "opcion7",
-  title: "Inventario de medicamentos",
-  description: "Controlá cuántas pastillas te quedan y recibí un aviso cuando sea momento de comprar más.",
-  isCustomModule: true,
-  renderFunctionName: "renderInventarioModule"
+    id: "opcion7",
+    title: "Avisos y recordatorios",
+    description: "Elegí cuándo querés que te avisemos para contarnos cómo te sentís.",
+    isCustomModule: true,
+    renderFunctionName: "renderPreferenciasModule"
+  },
+  {
+    id: "opcion8",
+    title: "S.O.S.",
+    description: "Cargá a quién llamar en una emergencia y mirá tus avisos de ayuda.",
+    isCustomModule: true,
+    renderFunctionName: "renderSosModule"
+  },
+  {
+    id: "opcion9",
+    title: "Mi perfil",
+    description: "Modificá tus datos personales, tu rol y tu contraseña.",
+    hiddenInMenu: true, // solo se abre desde el link "MI PERFIL" de la barra superior
+    isCustomModule: true,
+    renderFunctionName: "renderPerfilModule"
   }
 ];
 
@@ -51,7 +72,19 @@ const healthFunctions = [
 document.addEventListener("DOMContentLoaded", function () {
   renderProceduralUI();
   initFooterToggle();
+  initLinkPerfil();
 });
+
+/* LINK "MI PERFIL" DE LA BARRA SUPERIOR: abre la pantalla de perfil del menú lateral */
+function initLinkPerfil() {
+  const link = document.getElementById("linkMiPerfil");
+  if (!link) return;
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const idx = healthFunctions.findIndex(function (f) { return f.id === "opcion9"; });
+    if (idx >= 0) setActiveFunction(idx);
+  });
+}
 
 /* RENDERIZADO PROCEDURAL DE FILAS (BOTÓN + SEGMENTO) Y PANELES */
 function renderProceduralUI() {
@@ -59,12 +92,14 @@ function renderProceduralUI() {
   const displayContainer = document.getElementById("functionDisplayArea");
 
   menuContainer.innerHTML = "";
-  displayContainer.innerHTML = "";
+  displayContainer.querySelectorAll(".function-panel").forEach(function (p) { p.remove(); });
 
   healthFunctions.forEach(function (funcItem, index) {
 
     const row = document.createElement("div");
     row.className = "menu-row";
+    // Las funciones con hiddenInMenu conservan su panel pero no aparecen en el listado lateral
+    if (funcItem.hiddenInMenu) row.style.display = "none";
 
     const button = document.createElement("button");
     button.className = "function-tab-btn";
@@ -95,12 +130,18 @@ function renderProceduralUI() {
         const customDOM = customRenderFn(funcItem.description);
         panel.appendChild(customDOM);
       }
+
+      (funcItem.extraRenderFunctionNames || []).forEach(function (fnName) {
+        const extraFn = window[fnName];
+        if (typeof extraFn === "function") {
+          panel.appendChild(extraFn());
+        }
+      });
     } else {
       const titleElem = document.createElement("h2");
       titleElem.className = "panel-title";
       titleElem.textContent = funcItem.title;
       panel.appendChild(titleElem);
-
 
       const descElem = document.createElement("p");
       descElem.className = "panel-description";
@@ -127,7 +168,7 @@ function renderProceduralUI() {
   });
 
   if (healthFunctions.length != 0) {
-    setActiveFunction(1);
+    setActiveFunction(0);
   }
 }
 
@@ -160,6 +201,11 @@ function setActiveFunction(targetIndex) {
       pnl.classList.add("active");
     }
   });
+
+  // Forzamos un evento de redimensionamiento para que FullCalendar calcule el tamaño correcto al mostrarse
+  setTimeout(() => {
+    window.dispatchEvent(new Event('resize'));
+  }, 50);
 }
 
 /* CONTROLADOR PARA EL FOOTER DESPLEGABLE */

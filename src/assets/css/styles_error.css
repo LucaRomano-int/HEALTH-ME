@@ -1,0 +1,136 @@
+/* ==========================================
+   CSS DEDICADO PARA PÁGINAS DE ERROR (ESTILO SPLIT / LIMPIO)
+   ========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* CONTENEDOR PRINCIPAL SPLIT (IMAGEN IZQ, TEXTO DER) */
+.error-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 40px;
+}
+
+/* COLUMNA IZQUIERDA: IMAGEN (SIN RECUADRO, FLOTANDO) */
+.error-image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* COLUMNA DERECHA: TEXTO Y ACCIÓN */
+.error-text-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 16px;
+}
+
+.error-code {
+  font-size: 80px;
+  font-weight: 900;
+  color: #2c3e50;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.error-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2c3e50;
+}
+
+.error-description {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* BOTÓN ESTILO HEALTH / PÍLLORA */
+.btn-error-home {
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #5cb8bc;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(92, 184, 188, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-error-home:hover {
+  background-color: #499fa3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(92, 184, 188, 0.4);
+}
+
+/* RESPONSIVE DESIGN PARA PANTALLAS CHICAS */
+@media (max-width: 768px) {
+  .error-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .error-text-box {
+    align-items: center;
+    text-align: center;
+  }
+
+  .error-code {
+    font-size: 64px;
+  }
+
+  .error-title {
+    font-size: 22px;
+  }
+
+  .error-description {
+    font-size: 14px;
+  }
+
+  .error-img {
+    max-width: 200px;
+  }
+}

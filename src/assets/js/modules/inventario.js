@@ -3,7 +3,8 @@
     cuando alcanzan para pocos días. El stock NO se descuenta con un cron:
     se calcula al vuelo a partir de (stock_base, fecha_base, consumo diario). */
 
-const API_URL = "https://health-me.infinityfreeapp.com";
+// Ruta desde la raíz del sitio: sirve con cualquier puerto o host.
+const API_URL = "/health-me_backend-php";
 const INVENTARIO_API = `${API_URL}/api/inventario.php`;
 const INVENTARIO_UMBRAL_DEFECTO = 3; /* días de aviso por defecto */
 
@@ -77,7 +78,8 @@ function inventarioNormalizar(fila) {
         tomas_por_dia: Number(fila.tomas_por_dia),
         stock_base: Number(fila.stock_base),
         fecha_base: fila.fecha_base,
-        umbral_dias: Number(fila.umbral_dias)
+        umbral_dias: Number(fila.umbral_dias),
+        ultima_toma: fila.ultima_toma || null /* 'YYYY-MM-DD HH:MM:SS' de la Bitácora, o null */
     };
 }
 
@@ -235,7 +237,7 @@ function renderInventarioModule(description) {
         btnEditar.title = "Editar";
         btnEditar.textContent = "✏️";
         btnEditar.addEventListener("click", function () {
-        entrarEnEdicion(med, info);
+            entrarEnEdicion(med, info);
         });
 
         const btnBorrar = document.createElement("button");
@@ -243,17 +245,23 @@ function renderInventarioModule(description) {
         btnBorrar.className = "inv-icon-btn";
         btnBorrar.title = "Eliminar";
         btnBorrar.textContent = "🗑️";
-        btnBorrar.addEventListener("click", function () {
-        if (!confirm("¿Eliminar " + med.nombre + " del inventario?")) {
-            return;
-        }
-        inventarioPeticion("eliminar", { id: med.id }).then(function (resp) {
-            if (resp.ok) {
-            cargar();
-            } else {
-            mostrarMensaje(resp.mensaje || "No se pudo eliminar.", true);
+        btnBorrar.addEventListener("click", async function () {
+            const acepto = await hmConfirmar({
+                titulo: "Eliminar medicamento",
+                mensaje: "¿Eliminar " + med.nombre + " del inventario?",
+                textoConfirmar: "Eliminar",
+                peligro: true
+            });
+            if (!acepto) {
+                return;
             }
-        });
+            inventarioPeticion("eliminar", { id: med.id }).then(function (resp) {
+                if (resp.ok) {
+                    cargar();
+                } else {
+                    mostrarMensaje(resp.mensaje || "No se pudo eliminar.", true);
+                }
+            });
         });
 
         acciones.appendChild(btnEditar);
@@ -280,24 +288,82 @@ function renderInventarioModule(description) {
         const estado = document.createElement("div");
         estado.className = "inv-status";
         if (info.estado === "agotado") {
-        estado.textContent = "Agotado: hay que comprar ya";
+            estado.textContent = "Agotado: hay que comprar ya";
         } else if (info.estado === "poco") {
-        estado.textContent = "Quedan pocos días: comprar pronto";
+            estado.textContent = "Quedan pocos días: comprar pronto";
         } else {
-        estado.textContent = "Stock suficiente";
+            estado.textContent = "Stock suficiente";
         }
         card.appendChild(estado);
 
         const detalle = document.createElement("p");
         detalle.className = "inv-detail";
         if (info.estado === "agotado") {
-        detalle.textContent = "Consumo: " + info.consumoDiario + " por día.";
+            detalle.textContent = "Consumo: " + info.consumoDiario + " por día.";
         } else {
-        detalle.textContent = "Alcanza para " + info.diasRestantes + (info.diasRestantes === 1 ? " día" : " días") +
-            " (hasta el " + info.fechaAgotado.toLocaleDateString("es-AR", { day: "numeric", month: "long" }) + "). " +
-            "Consumo: " + info.consumoDiario + " por día.";
+            detalle.textContent = "Alcanza para " + info.diasRestantes + (info.diasRestantes === 1 ? " día" : " días") +
+                " (hasta el " + info.fechaAgotado.toLocaleDateString("es-AR", { day: "numeric", month: "long" }) + "). " +
+                "Consumo: " + info.consumoDiario + " por día.";
         }
         card.appendChild(detalle);
+
+        /* BOTÓN: MARCAR TOMA REALIZADA (-1 DOSIS) + REGISTRO DE HORA */
+        const tomaBox = document.createElement("div");
+        tomaBox.style.cssText = "margin-bottom: 10px;";
+
+        const btnTomar = document.createElement("button");
+        btnTomar.type = "button";
+        btnTomar.className = "inv-btn inv-btn-primary";
+        btnTomar.style.cssText = "width: 100%; background-color: #10b981; border-color: #10b981;";
+        btnTomar.textContent = `✔ Tomar dosis (${med.dosis_por_toma} ${med.dosis_por_toma === 1 ? 'pastilla' : 'pastillas'})`;
+
+        if (info.restantes <= 0) {
+            btnTomar.disabled = true;
+            btnTomar.style.opacity = "0.5";
+            btnTomar.style.cursor = "not-allowed";
+        }
+
+        // Elemento para mostrar la última toma realizada
+        const ultTomaText = document.createElement("small");
+        ultTomaText.style.cssText = "display: block; margin-top: 5px; color: #64748b; font-size: 12px; text-align: center;";
+        
+        // La última toma sale de la Bitácora (la calcula el servidor): refleja tanto este botón como el «Tomé» de recordatorios
+        if (med.ultima_toma) {
+            const f = new Date(String(med.ultima_toma).replace(" ", "T"));
+            if (!isNaN(f)) {
+                ultTomaText.textContent = "Última toma: " + f.toLocaleString("es-AR", {
+                    day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit"
+                });
+            }
+        }
+
+        btnTomar.addEventListener("click", function () {
+            const dosisADescontar = med.dosis_por_toma || 1;
+            const nuevoStock = Math.max(0, info.restantes - dosisADescontar);
+            
+            const ahora = new Date();
+
+            inventarioPeticion("stock", { 
+                id: med.id, 
+                stock_actual: nuevoStock,
+                es_toma: 1 
+            }).then(function (resp) {
+                if (resp.ok) {
+                    // Guardar hora de última toma
+                    mostrarMensaje(`Toma de ${med.nombre} registrada a las ${ahora.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit' })} hs.`, false);
+                    cargar();
+                } else {
+                    mostrarMensaje(resp.mensaje || "No se pudo descontar el stock.", true);
+                }
+            });
+        });
+
+        tomaBox.appendChild(btnTomar);
+        tomaBox.appendChild(ultTomaText);
+        card.appendChild(tomaBox);
+
+        tomaBox.appendChild(btnTomar);
+        card.appendChild(tomaBox);
 
         /* REPOSICIÓN RÁPIDA: "compré más" */
         const reponer = document.createElement("div");
@@ -313,19 +379,19 @@ function renderInventarioModule(description) {
         btnSumar.className = "inv-btn inv-btn-primary";
         btnSumar.textContent = "Sumar";
         btnSumar.addEventListener("click", function () {
-        const comprada = Number(inCantidad.value);
-        if (!(comprada > 0)) {
-            mostrarMensaje("Ingresá cuántas pastillas compraste.", true);
-            return;
-        }
-        inventarioPeticion("stock", { id: med.id, stock_actual: info.restantes + comprada }).then(function (resp) {
-            if (resp.ok) {
-            mostrarMensaje("Stock de " + med.nombre + " actualizado.", false);
-            cargar();
-            } else {
-            mostrarMensaje(resp.mensaje || "No se pudo actualizar.", true);
+            const comprada = Number(inCantidad.value);
+            if (!(comprada > 0)) {
+                mostrarMensaje("Ingresá cuántas pastillas compraste.", true);
+                return;
             }
-        });
+            inventarioPeticion("stock", { id: med.id, stock_actual: info.restantes + comprada }).then(function (resp) {
+                if (resp.ok) {
+                    mostrarMensaje("Stock de " + med.nombre + " actualizado.", false);
+                    cargar();
+                } else {
+                    mostrarMensaje(resp.mensaje || "No se pudo actualizar.", true);
+                }
+            });
         });
         reponer.appendChild(inCantidad);
         reponer.appendChild(btnSumar);
@@ -333,7 +399,6 @@ function renderInventarioModule(description) {
 
         return card;
     }
-
     /* DIBUJA TODO A PARTIR DE LA LISTA ACTUAL */
     function dibujar() {
         const hoy = new Date();
@@ -341,12 +406,19 @@ function renderInventarioModule(description) {
         alertasBox.innerHTML = "";
 
         if (medicamentos.length === 0) {
-        const vacio = document.createElement("p");
-        vacio.className = "inv-empty";
-        vacio.textContent = "Todavía no cargaste medicamentos. Agregá el primero con el formulario de arriba.";
-        grid.appendChild(vacio);
-        inventarioActualizarAvisos(container, []);
-        return;
+            const vacio = document.createElement("p");
+            vacio.className = "inv-empty";
+            
+            // Verificamos si existe un formulario visible para saber qué mensaje mostrar
+            const formVisible = document.querySelector('.inv-form') && document.querySelector('.inv-form').style.display !== 'none';
+            
+            vacio.textContent = formVisible 
+                ? "Todavía no cargaste medicamentos. Agregá el primero con el formulario de arriba."
+                : "El paciente todavía no tiene medicamentos registrados en su inventario.";
+                
+            grid.appendChild(vacio);
+            inventarioActualizarAvisos(container, []);
+            return;
         }
 
         const conAviso = [];
@@ -381,15 +453,24 @@ function renderInventarioModule(description) {
         inventarioPeticion("listar", {})
         .then(function (resp) {
             if (resp.ok) {
-            medicamentos = resp.medicamentos.map(inventarioNormalizar);
-            dibujar();
+                medicamentos = resp.medicamentos.map(inventarioNormalizar);
+                dibujar();
+
+                // NUEVO: Ocultar controles si es acompañante
+                if (resp.rol_usuario === 'acompañante') {
+                    // Ocultar formulario de agregar nuevo
+                    const formAgregar = document.querySelector('.inv-form');
+                    if (formAgregar) formAgregar.style.display = 'none';
+
+                    // Ocultar botones de acción en las tarjetas (lápiz, basura, tomar dosis, reponer)
+                    document.querySelectorAll('.inv-card-actions, .inv-restock, .inv-btn-primary').forEach(btn => {
+                        btn.style.display = 'none';
+                    });
+                }
             } else {
-            mostrarMensaje(resp.mensaje || "No se pudo cargar el inventario.", true);
+                mostrarMensaje(resp.mensaje || "No se pudo cargar el inventario.", true);
             }
         })
-        .catch(function () {
-            mostrarMensaje("No pudimos conectar con el servidor.", true);
-        });
     }
 
     cargar();

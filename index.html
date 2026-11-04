@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthMe - Inicio</title>
-    <link
-      rel="stylesheet"
-      href="src/assets/css/styles.css"
-    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="src/assets/css/styles.css" />
   </head>
   <body>
     <!-- NAVBAR (Inicia oculta y aparece al scrollear) -->
@@ -15,7 +13,6 @@
       <div class="navbar-container">
         <div class="nav-logo">
           <a href="index.html">
-            <!-- Logo principal de la barra de navegación -->
             <img
               src="public/logos/logoHealthMeCeleste.png"
               alt="Logo HealthMe"
@@ -24,7 +21,6 @@
           </a>
         </div>
 
-        <!-- BOTÓN MENÚ HAMBURGUESA (Visible en pantallas chicas y con zoom alto) -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -33,19 +29,13 @@
 
         <nav class="nav-links" id="nav-links">
           <a href="#home" class="nav-link">HOME</a>
-          <a
-            href="src/views/login.html"
-            class="nav-link btn-login"
-            >INICIAR SESIÓN</a
-          >
-          <a href="src/views/contact.html" class="nav-link"
-            >CONTACTO</a
-          >
+          <a href="src/views/login.html" class="nav-link btn-login">INICIAR SESIÓN</a>
+          <a href="src/views/contact.html" class="nav-link">CONTACTO</a>
         </nav>
       </div>
     </header>
 
-    <!-- HERO SECTION (100vh - Pantalla Completa) -->
+    <!-- HERO SECTION -->
     <section id="home" class="hero-section">
       <div class="hero-content">
         <img
@@ -59,21 +49,198 @@
 
     <!-- ABOUT US / QUIÉNES SOMOS -->
     <section id="quienes-somos" class="about-section">
-      <h2 class="section-title">QUIÉNES SOMOS</h2>
-      <div class="about-container">
-        <div class="about-text-box">
-          <p>
-            En HealthMe nos dedicamos a brindar soluciones digitales integrales
-            para la salud. Facilitamos el acceso a la gestión médica, conectando
-            profesionales y pacientes de forma ágil, segura y confiable.
-          </p>
+      <h2 class="section-title">SOBRE NOSOTROS</h2>
+
+      <!-- Barra de pestañas con indicador deslizante -->
+      <div class="tabs-container">
+        <button class="tab-btn active" data-tab="tab-app" data-index="0">APP WEB</button>
+        <button class="tab-btn" data-tab="tab-devs" data-index="1">DESARROLLADORES</button>
+        <div class="tabs-indicator"></div>
+      </div>
+
+      <!-- Contenido Pestaña 1: App Web -->
+      <div id="tab-app" class="tab-content active">
+        <div class="about-container">
+          <div class="about-text-box">
+            <h3 class="about-subtitle">Innovación y Compromiso en Salud</h3>
+            <p>
+              HealthMe es una plataforma digital integral diseñada para optimizar la comunicación médica 
+              y el seguimiento del bienestar. Unificamos registros clínicos, alarmas de medicación y 
+              métricas de salud en una experiencia simple, confiable y accesible.
+            </p>
+          </div>
+          <div class="about-img-box">
+            <img
+              src="public/renders/renderAppPlataforma.jpg"
+              alt="Sobre la plataforma web"
+              class="render-img"
+            />
+          </div>
         </div>
-        <div class="about-img-box">
-          <img
-            src="public/renders/renderAppPlataforma.jpg"
-            alt="Sobre nosotros"
-            class="render-img"
-          />
+
+        <!-- PRIMERA GALERÍA (3 IMÁGENES) -->
+        <div class="what-it-does-subsection">
+          <h2 class="section-title">¿QUÉ HACE HEALTH ME?</h2>
+          
+          <div class="gallery-container">
+            <div class="cards-stack-wrapper" id="cardsStackWrapper">
+              <button class="stack-btn prev-btn" aria-label="Anterior">&#10094;</button>
+              <button class="stack-btn next-btn" aria-label="Siguiente">&#10095;</button>
+
+              <div class="stack-card active" data-index="0">
+                <img src="public/renders/parametros.png" alt="Parámetros de Salud" class="stack-img" />
+              </div>
+              <div class="stack-card next" data-index="1">
+                <img src="public/renders/fechas.png" alt="Gestión de Fechas" class="stack-img" />
+              </div>
+              <div class="stack-card back" data-index="2">
+                <img src="public/renders/bitacora.png" alt="Bitácora Médica" class="stack-img" />
+              </div>
+            </div>
+
+            <div class="info-dynamic-box" id="infoDynamicBox">
+              <h4 id="infoTitle">Parámetros de Salud</h4>
+              <p id="infoDescription">
+                Visualizá y monitoreá tus signos vitales y métricas de salud principales con indicadores visuales en tiempo real.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEGUNDA GALERÍA INTERACTIVA (3 IMÁGENES INVERTIDA) -->
+        <div class="what-it-does-subsection inverse-subsection">
+          <div class="gallery-container gallery-inverse">
+            <div class="info-dynamic-box" id="infoDynamicBox2">
+              <h4 id="infoTitle2">Panel General Dashboard</h4>
+              <p id="infoDescription2">
+                Accedé a un resumen integral con los accesos rápidos y la información de salud más relevante unificada en un solo lugar.
+              </p>
+            </div>
+
+            <div class="cards-stack-wrapper" id="cardsStackWrapper2">
+              <button class="stack-btn prev-btn" aria-label="Anterior">&#10094;</button>
+              <button class="stack-btn next-btn" aria-label="Siguiente">&#10095;</button>
+
+              <div class="stack-card active" data-index="0">
+                <img src="public/renders/dashboard.png" alt="Panel Dashboard" class="stack-img" />
+              </div>
+              <div class="stack-card next" data-index="1">
+                <img src="public/renders/medicamentos.png" alt="Control de Medicamentos" class="stack-img" />
+              </div>
+              <div class="stack-card back" data-index="2">
+                <img src="public/renders/sos.png" alt="Alerta SOS" class="stack-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido Pestaña 2: Desarrolladores -->
+      <div id="tab-devs" class="tab-content">
+        <div class="developers-container">
+          <h2 class="section-title">EQUIPO DE DESARROLLO</h2>
+
+          <div class="dev-divider"></div>
+          
+          <div class="dev-cards-list">
+            
+            <!-- Desarrollador 1 -->
+            <div class="dev-card">
+              <div class="dev-img-container">
+                <img src="public/renders/racoonIcon.png" alt="Luca Romano" class="dev-avatar" />
+              </div>
+              <div class="dev-info-box">
+                <h3 class="dev-name">Luca Romano</h3>
+                <p class="dev-desc">Team leader / Desarrollador FrontEnd / Encargado de conexiones y Revision de archivos.</p>
+              </div>
+              <a href="https://github.com/LucaRomano-int" target="_blank" rel="noopener noreferrer" class="dev-github-link" aria-label="GitHub de Luca Romano">
+                <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Desarrollador 2 -->
+            <div class="dev-card dev-card-inverse">
+              <a href="https://github.com/Orne-Levato" target="_blank" rel="noopener noreferrer" class="dev-github-link" aria-label="GitHub de Ornella Levato">
+                <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <div class="dev-info-box">
+                <h3 class="dev-name">Ornella Levato</h3>
+                <p class="dev-desc">Estrutuctura de datos y algoritmos funcionales vinculadas con la base de datos.</p>
+              </div>
+              <div class="dev-img-container">
+                <img src="public/renders/catIcon.png" alt="Ornella Levato" class="dev-avatar" />
+              </div>
+            </div>
+
+            <!-- Desarrollador 3 -->
+            <div class="dev-card">
+              <div class="dev-img-container">
+                <img src="public/renders/chickenIcon.png" alt="Edgar Torales" class="dev-avatar" />
+              </div>
+              <div class="dev-info-box">
+                <h3 class="dev-name">Edgar Torales</h3>
+                <p class="dev-desc">FullStack e Integraciónes del sistema / Autenticaciónes y funciones de la plataforma.</p>
+              </div>
+              <a href="https://github.com/edgarcarp99" target="_blank" rel="noopener noreferrer" class="dev-github-link" aria-label="GitHub de Edgar Torales">
+                <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Desarrollador 4 -->
+            <div class="dev-card dev-card-inverse">
+              <a href="https://github.com/ru10n" target="_blank" rel="noopener noreferrer" class="dev-github-link" aria-label="GitHub de Luca Tronchin">
+                <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <div class="dev-info-box">
+                <h3 class="dev-name">Luca Tronchin</h3>
+                <p class="dev-desc">Desarrollador Backend / Maquetación avanzada / Logica de negocio y de sistema.</p>
+              </div>
+              <div class="dev-img-container">
+                <img src="public/renders/ratIcon.png" alt="Luca Tronchin" class="dev-avatar" />
+              </div>
+            </div>
+
+            <!-- Desarrollador 5 -->
+            <div class="dev-card">
+              <div class="dev-img-container">
+                <img src="public/renders/bunnyIcon.png" alt="Maria Angelica Violi" class="dev-avatar" />
+              </div>
+              <div class="dev-info-box">
+                <h3 class="dev-name">Maria Angelica Violi</h3>
+                <p class="dev-desc">QA & Testing / Control de calidad, depuración de errores y pruebas de rendimiento multidispositivo.</p>
+              </div>
+              <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="dev-github-link" aria-label="GitHub de Maria Angelica Violi">
+                <svg class="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN VIDEO EXPLICATIVO (Debajo de Quiénes Somos / Arriba de Descargas) -->
+    <section class="video-section">
+      <div class="video-container">
+        <h2 class="section-title">VIDEO EXPLICATIVO</h2>
+        <div class="video-wrapper">
+          <!-- Reemplazar el ID de YouTube por el ID de tu video final -->
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Video Explicativo HealthMe"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </section>
@@ -118,11 +285,10 @@
             <li>
               <a href="index.html">Inicio</a>
             </li>
-            <li><a href="#quienes-somos">Quiénes Somos</a></li>
+            <li><a href="index.html#quienes-somos" class="footer-tab-link" data-target="tab-app">App Web</a></li>
+            <li><a href="index.html#quienes-somos" class="footer-tab-link" data-target="tab-devs">Desarrolladores</a></li>
             <li>
-              <a href="src/views/contact.html"
-                >Habla con nosotros</a
-              >
+              <a href="src/views/contact.html">Habla con nosotros</a>
             </li>
           </ul>
         </div>

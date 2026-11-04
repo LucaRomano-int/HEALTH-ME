@@ -1,0 +1,35 @@
+/* Pantalla "Mi perfil". Reutiliza .hm-campo, .hm-campo-grupo, .hm-ayuda, .hm-estado-msg y .modal-btn de user.css. */
+
+.perfil-secciones { display: flex; flex-direction: column; gap: 18px; }
+
+.perfil-seccion {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 20px 20px;
+}
+
+.perfil-seccion .hm-subtitulo { margin-top: 12px; }
+
+.perfil-form { display: flex; flex-direction: column; gap: 14px; max-width: 520px; }
+.perfil-form .modal-btn { min-height: 48px; font-size: 16px; padding: 10px 24px; }
+.perfil-form [hidden] { display: none; }
+
+/* Elección de rol */
+.perfil-rol-lista { display: flex; flex-direction: column; gap: 10px; }
+
+.perfil-rol-opcion {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #2c3e50;
+}
+.perfil-rol-opcion input { width: 22px; height: 22px; margin-top: 2px; accent-color: #0f766e; flex-shrink: 0; }
+.perfil-rol-opcion:has(input:checked) { border-color: #0f766e; background: #f0fdfa; }
+.perfil-rol-opcion:focus-within { outline: 3px solid #5cb8bc; outline-offset: 2px; }
+.perfil-rol-detalle { display: block; margin-top: 2px; font-size: 15px; line-height: 1.4; color: #475569; }
+.perfil-rol-deshabilitado { opacity: 0.6; cursor: not-allowed; }

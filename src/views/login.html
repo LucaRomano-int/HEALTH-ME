@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HealthMe - Acceso</title>
+  <link rel="icon" type="image/x-icon" href="/../favicon.ico">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/login.css">
 </head>
@@ -148,14 +149,19 @@
         </div>
       </div>
 
-      <div class="footer-col">
-        <h3>Navegación</h3>
-        <ul>
-          <li><a href="../../index.html">Inicio</a></li>
-          <li><a href="../../index.html#quienes-somos">Quiénes Somos</a></li>
-          <li><a href="contact.html">Habla con nosotros</a></li>
-        </ul>
-      </div>
+        <div class="footer-col">
+          <h3>Navegación</h3>
+          <ul>
+            <li>
+              <a href="../../index.html">Inicio</a>
+            </li>
+            <li><a href="../../index.html#quienes-somos" class="footer-tab-link" data-target="tab-app">App Web</a></li>
+            <li><a href="../../index.html#quienes-somos" class="footer-tab-link" data-target="tab-devs">Desarrolladores</a></li>
+            <li>
+              <a href="src/views/contact.html">Habla con nosotros</a>
+            </li>
+          </ul>
+        </div>
 
       <div class="footer-col">
         <h3>Marco Legal</h3>
@@ -187,6 +193,7 @@
   </footer>
 
   <!-- Archivo JavaScript separado -->
+  <script src="../assets/js/aviso.js"></script>
   <script src="../assets/js/login.js"></script>
 </body>
 </html>

@@ -183,7 +183,7 @@ body {
 
 /* ABOUT US SECTION */
 .about-section {
-  padding: 90px 20px 70px;
+  padding: 40px 20px 70px;
   background-color: #ffffff;
 }
 
@@ -198,22 +198,30 @@ body {
 
 .about-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 35px;
+  justify-content: space-between;
+  gap: 50px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 60px auto; /* Margen inferior para separar la presentación de la galería inferior */
 }
 
 .about-text-box {
-  flex: 1; 
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 35px 25px;
-  background-color: #fcfcfc;
+  flex: 1;
+}
+
+.about-text-box p {
   font-size: 18px;
   color: #4a5568;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  line-height: 1.7;
+}
+
+/* Título secundario sobre el párrafo descriptivo de About */
+.about-subtitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a365d; /* Tono azul oscuro acorde al branding */
+  margin-bottom: 16px;
+  line-height: 1.3;
 }
 
 .about-img-box {
@@ -228,6 +236,17 @@ body {
   max-width: 550px;
   height: auto;
   border-radius: 12px;
+}
+
+/* Responsivo para pantallas chicas */
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-img-box {
+    max-width: 100%;
+  }
 }
 
 /* DOWNLOAD SECTION */
@@ -275,6 +294,181 @@ body {
   background-color: #63c0c5;
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(132, 215, 219, 0.6);
+}
+
+/* SECCIÓN ¿QUÉ HACE HEALTH ME? */
+.what-it-does-section {
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e2e8f0;
+}
+
+/** SUBSECCIÓN ¿QUÉ HACE HEALTH ME? (Libre, sin cajas y con gran tamaño) */
+.what-it-does-subsection {
+  margin-top: 60px;
+  padding: 40px 0;
+  width: 100%;
+  background-color: transparent; /* Sin fondo ni recuadros */
+  border: none;
+}
+
+.what-it-does-subsection .section-subtitle {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 50px;
+  letter-spacing: 0.5px;
+}
+
+/* Galería en formato libre y de gran tamaño */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 110px;
+  max-width: 1300px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* Contenedor de las tarjetas apiladas (Tamaño ampliado) */
+.cards-stack-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 0 35px;
+}
+
+/* Estilo de cada tarjeta libre de bordes contenedores exteriores */
+.stack-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  border: none; /* Quitamos bordes rígidos */
+}
+
+.stack-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botones de navegación flotantes de buen tamaño */
+.stack-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(44, 62, 80, 0.9);
+  color: #ffffff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 10; /* Siempre por encima de las tarjetas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Mostrar las flechas únicamente cuando la tarjeta esté activa (al frente) */
+.stack-card.active .stack-btn {
+  display: flex !important;
+}
+
+.stack-btn:hover {
+  background-color: #84d7db;
+  color: #1a365d;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Posición de los botones de navegación más pegados al borde de la tarjeta */
+.prev-btn {
+  left: -25px; /* Podés probar bajándolo a 5px si los querés aún más al borde */
+}
+
+.next-btn {
+  right: -25px; /* Podés probar bajándolo a 5px si los querés aún más al borde */
+}
+
+/* Efecto visual de profundidad y movimiento de tarjetas */
+.stack-card.active {
+  z-index: 3;
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+.stack-card.next {
+  z-index: 2;
+  transform: translateX(25px) translateY(20px) scale(0.95);
+  opacity: 0.75;
+  filter: brightness(0.9);
+}
+
+.stack-card.back {
+  z-index: 1;
+  transform: translateX(50px) translateY(40px) scale(0.9);
+  opacity: 0.45;
+  filter: brightness(0.8);
+}
+
+/* Panel de información a la derecha (Libre, sin caja contenedora con bordes) */
+.info-dynamic-box {
+  flex: 1;
+  max-width: 480px;
+  background-color: transparent; /* Sin fondo de caja */
+  padding: 10px 0;
+  border: none;
+  box-shadow: none;
+}
+
+.info-dynamic-box h4 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.info-dynamic-box p {
+  font-size: 18px;
+  color: #4a5568;
+  line-height: 1.7;
+}
+/* Espaciado para la segunda subsección */
+.inverse-subsection {
+  margin-top: 70px;
+}
+
+
+/* Responsive para pantallas medianas o chicas */
+@media (max-width: 900px) {
+  .gallery-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .cards-stack-wrapper {
+    height: 320px;
+    max-width: 100%;
+  }
+  .info-dynamic-box {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+  }
 }
 
 /* FOOTER INSTITUCIONAL Y MÉDICO */
@@ -389,6 +583,251 @@ body {
   transform: translateY(0);
 }
 
+/* TABS - SECCIÓN QUIÉNES SOMOS */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 35px auto;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.tab-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.tab-btn:hover {
+  color: #2c3e50;
+}
+
+.tab-btn.active {
+  color: #2c3e50;
+}
+
+/* Barra indicadora deslizante */
+.tabs-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50%; /* Como hay 2 pestañas, cada una ocupa el 50% */
+  height: 3px;
+  background-color: #84d7db;
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+
+/* Clases de desplazamiento para el indicador según la pestaña seleccionada */
+.tabs-container[data-active-index="0"] .tabs-indicator {
+  transform: translateX(0%);
+}
+
+.tabs-container[data-active-index="1"] .tabs-indicator {
+  transform: translateX(100%);
+}
+
+/* Ocultación y despliegue de contenidos */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Estructura base de la tarjeta (Imagen a la izquierda, Texto a la derecha) */
+/* Tarjeta principal con el espacio interno necesario para que la imagen no pise el texto */
+
+.dev-divider {
+  width: 800px;
+  height: 2px;
+  background-color: #cbd5e1;
+  margin: 0px auto 80px auto;
+  border-radius: 2px;
+}
+
+.dev-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 120px;
+  border: 4px solid #84d7db;
+  padding: 25px 45px 25px 135px; /* Foto a la izq | Github a la der */
+  width: 100%;
+  max-width: 920px;
+  margin-left: 0;
+  margin-right: auto;
+  overflow: visible !important;
+}
+/* Separación vertical más amplia entre tarjetas */
+.dev-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 75px; 
+}
+
+/* Tarjeta inversa (imagen a la derecha): simetría en el padding derecho */
+.dev-card.dev-card-inverse {
+  flex-direction: row;
+  padding: 25px 135px 25px 45px; /* Github a la izq | Foto a la der */
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Posicionamiento exacto del contenedor de la imagen grande */
+.dev-img-container {
+  position: absolute;
+  left: -35px; /* Sobresale hacia afuera de manera equilibrada */
+  top: 50%;
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ffffff;
+  z-index: 5;
+}
+
+.developers-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 30px 25px;
+}
+
+/* Para las tarjetas inversas (imagen a la derecha) */
+.dev-card.dev-card-inverse .dev-img-container {
+  left: auto;
+  right: -35px; /* Sobresale hacia afuera por la derecha */
+}
+
+.dev-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Caja de texto con espacio y alineación correcta para que no choque con la imagen */
+.dev-info-box {
+  flex-grow: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Alineación de texto intercalada (Efecto espejo para tarjetas pares) */
+.dev-card.dev-card-inverse .dev-info-box {
+  padding-left: 15px;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.dev-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.dev-desc {
+  font-size: 16px;
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dev-github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #2c3e50;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.dev-github-link:hover {
+  background-color: #84d7db;
+  color: #1a365d;
+  transform: scale(1.12);
+  box-shadow: 0 6px 14px rgba(132, 215, 219, 0.5);
+}
+
+.github-icon {
+  width: 35px;
+  height: 35px;
+}
+
+/* ==========================================
+   SECCIÓN VIDEO EXPLICATIVO
+   ========================================== */
+.video-section {
+  padding: 60px 20px 80px;
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.video-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video-container .section-title {
+  margin-bottom: 35px;
+}
+
+/* Contenedor responsivo con relación de aspecto 16:9 */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  background-color: #000000;
+  border: 3px solid #84d7db;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Ajustes para pantallas móviles */
+@media (max-width: 768px) {
+  .video-section {
+    padding: 40px 15px 60px;
+  }
+}
+
 /* MEDIA QUERIES PARA RESOLUCIONES CHICAS (1280x720, 1366x768) Y ZOOM */
 @media (max-width: 1024px) {
   .menu-toggle {
@@ -435,6 +874,144 @@ body {
 
   .about-text-box {
     width: 100%;
+  }
+}
+
+/* ==========================================
+   SECCIÓN DE DESCARGAS (ESTÉTIKA MEJORADA)
+   ========================================== */
+.download-section {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #f8f9fa 0%, #edf7f7 100%);
+  border-top: 1px solid #e2e8f0;
+}
+
+.download-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.download-subtitle {
+  font-size: 17px;
+  color: #64748b;
+  margin: -15px auto 45px auto;
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+/* Grilla interactiva de tarjetas */
+.download-cards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.download-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px 28px;
+  text-decoration: none;
+  width: 100%;
+  max-width: 450px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+}
+
+/* Efecto hover suave con borde de marca */
+.download-card:hover {
+  border-color: #84d7db;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(132, 215, 219, 0.25);
+}
+
+/* Ícono contenedor */
+.download-card-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background-color: #f0fdfd;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.download-card:hover .download-card-icon {
+  background-color: #84d7db;
+  color: #1a365d;
+}
+
+.download-card-icon svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+/* Información del botón */
+.download-card-info {
+  flex-grow: 1;
+}
+
+.download-platform-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #5cb8bc;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.download-platform-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.download-platform-desc {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Flecha de acción a la derecha */
+.download-card-arrow {
+  font-size: 20px;
+  color: #cbd5e1;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.download-card:hover .download-card-arrow {
+  color: #2c3e50;
+  transform: translateX(6px);
+}
+
+/* Responsivo para celulares */
+@media (max-width: 768px) {
+  .download-card {
+    padding: 20px;
+  }
+  
+  .download-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .download-card-icon svg {
+    width: 24px;
+    height: 24px;
   }
 }
 

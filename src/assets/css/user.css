@@ -130,13 +130,13 @@ body {
   font-size: 26px;
   color: #2c3e50;
   font-weight: 800;
-  margin-bottom: -10px;
+  margin-bottom: 8px;
 }
 
 .panel-description {
   color: #64748b;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .panel-content-card {
@@ -157,6 +157,24 @@ body {
   max-width: 260px;
   height: auto;
   opacity: 0.85;
+}
+
+.panel-description {
+  color: #64748b;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 25px; /* Espacio de separación antes del contenido de la pestaña */
+  position: relative;
+}
+
+/* Barra divisoria horizontal que no toca los extremos */
+.panel-description::after {
+  content: "";
+  display: block;
+  width: 97%; /* Ajusta este porcentaje si querés que sea más corta o más larga */
+  height: 2px; /* Grosor de la línea */
+  background-color: #cbd5e1; /* Color gris elegante */
+  margin: 18px auto 0 auto; /* Centrada horizontalmente con separación superior */
 }
 
 /* --- ESTILOS PARA LAS TARJETAS DE PARÁMETROS MÉDICOS --- */
@@ -218,7 +236,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -326,7 +346,6 @@ body {
 .signos-vitales-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -464,7 +483,6 @@ body {
 .inventario-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 18px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -730,6 +748,94 @@ body {
   vertical-align: middle;
 }
 
+/* --- ESTILOS PARA EL MODAL DE RECORDATORIOS --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.modal-content h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-field label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.modal-field input {
+  padding: 10px 12px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+}
+
+.modal-field input:focus {
+  border-color: #5cb8bc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-btn {
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.modal-btn-cancel {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.modal-btn-save {
+  background-color: #5cb8bc;
+  color: #ffffff;
+}
+
 /* Cartel flotante al entrar */
 .inv-toast {
   position: fixed;
@@ -769,6 +875,276 @@ body {
   line-height: 1;
 }
 
+/* --- ESTILOS ESPECÍFICOS PARA ACCESO COMPARTIDO --- */
+#acceso-compartido {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Tarjeta contenedora exterior con borde y radio redondeado */
+.acceso-card-wrapper {
+  background-color: #5cb8bc;
+  border-radius: 20px;
+  padding: 6px;
+  box-shadow: 0 4px 15px rgba(92, 184, 188, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Encabezado azul turquesa */
+.acceso-card-header {
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.acceso-header-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Cuerpo interior blanco */
+.acceso-card-body {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Formulario */
+.acceso-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.acceso-section-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.acceso-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.acceso-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.acceso-input-text {
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #334155;
+  background: #ffffff;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.acceso-input-text:focus {
+  border-color: #5cb8bc;
+  box-shadow: 0 0 0 3px rgba(92, 184, 188, 0.2);
+}
+
+.acceso-intro-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 15px 0 5px 0;
+}
+
+/* Grilla de 2 columnas para los checkboxes */
+.acceso-grid-permisos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 30px;
+  margin-bottom: 10px;
+}
+
+.acceso-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.acceso-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: #5cb8bc;
+  cursor: pointer;
+}
+
+/* Botón redondeado ovalado turquesa */
+.acceso-btn-submit {
+  align-self: flex-start;
+  background-color: #5cb8bc;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.acceso-btn-submit:hover {
+  background-color: #489b9f;
+}
+
+.acceso-btn-submit.small {
+  padding: 6px 14px;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.acceso-btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.acceso-btn-danger:hover {
+  background-color: #dc2626;
+}
+
+/* Mensajes de feedback */
+.acceso-msg {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.acceso-msg.exito {
+  color: #10b981;
+}
+
+.acceso-msg.error {
+  color: #ef4444;
+}
+
+.acceso-divider {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 15px 0;
+}
+
+/* Listas e invitaciones */
+.acceso-list-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin: 10px 0 5px 0;
+}
+
+.acceso-empty-text {
+  font-size: 14px;
+  color: #64748b;
+  margin: 5px 0 15px 0;
+}
+
+.acceso-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acceso-li {
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #334155;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acceso-li-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Tabla del visor de mediciones */
+.acceso-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.acceso-table th,
+.acceso-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 14px;
+}
+
+.acceso-table th {
+  background-color: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+}
+
+/* Adaptación responsive */
+@media (max-width: 600px) {
+  .acceso-grid-permisos {
+    grid-template-columns: 1fr;
+  }
+
+  .acceso-li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .acceso-li-actions {
+    align-self: flex-end;
+  }
+}
+
+/* Responsivo para los checkboxes en pantallas chicas */
+@media (max-width: 600px) {
+  #formInvitacion div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @media (max-width: 900px) {
   .inv-grid {
     grid-template-columns: 1fr;
@@ -780,4 +1156,1122 @@ body {
     left: 12px;
     max-width: none;
   }
+}
+
+/* ===== TAREA 3: ESTADO DIARIO, AVISOS Y RECORDATORIOS ===== */
+
+/* Foco visible para todo lo nuevo */
+.hm-carita:focus-visible,
+.hm-banner-estado button:focus-visible,
+.hm-pref-form button:focus-visible,
+.hm-pref-form input:focus-visible,
+.hm-pref-form select:focus-visible,
+.hm-caritas-modal button:focus-visible,
+#estado-diario-acompanante button:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+.hm-subtitulo {
+  margin: 18px 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #2c3e50;
+}
+
+.hm-ayuda {
+  margin: 4px 0;
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #475569;
+}
+
+/* Mensajes de resultado (aria-live) */
+.hm-estado-msg {
+  margin: 10px 0;
+  min-height: 1.4em;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+}
+.hm-estado-msg.hm-ok,
+.hm-caritas-mensaje.hm-ok {
+  color: #047857;
+}
+.hm-estado-msg.hm-error,
+.hm-caritas-mensaje.hm-error {
+  color: #b91c1c;
+}
+
+/* Banner "¿Cómo te sentís hoy?" arriba del panel */
+#hmBannerEstadoDiario {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin-bottom: 15px;
+}
+#hmBannerEstadoDiario[hidden] {
+  display: none;
+}
+.hm-banner-estado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 18px;
+  background: #fffbeb;
+  color: #78350f;
+  border: 2px solid #f59e0b;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.hm-banner-texto {
+  font-size: 19px;
+  font-weight: 800;
+}
+.hm-banner-estado .modal-btn,
+.hm-caritas-modal .modal-btn {
+  min-height: 48px;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Modal de las cuatro caritas */
+.hm-caritas-modal {
+  max-width: 460px;
+}
+.hm-caritas-fila {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.hm-carita {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 12px 8px;
+  font-size: 44px;
+  line-height: 1;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.hm-carita:hover:not(:disabled) {
+  border-color: #5cb8bc;
+  background: #f0fafa;
+}
+.hm-carita:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.hm-carita-texto {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+.hm-caritas-mensaje {
+  min-height: 1.4em;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #334155;
+}
+
+/* Formulario de preferencias */
+.hm-pref-form {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hm-fila-switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hm-fila-switch label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  cursor: pointer;
+}
+.hm-switch {
+  width: 28px;
+  height: 28px;
+  accent-color: #0f766e;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.hm-campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hm-campo-grupo label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+.hm-campo {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 18px;
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+.hm-campo:disabled {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+.hm-pref-form .modal-btn {
+  min-height: 48px;
+  font-size: 16px;
+  padding: 10px 24px;
+}
+
+/* Sección "Cómo está hoy" del acompañante */
+.hm-grid-estado {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+}
+/* Los colores .status-* originales no alcanzan contraste sobre fondo blanco: acá se oscurecen */
+.hm-estado-card .param-status-badge {
+  font-size: 16px;
+  text-align: center;
+}
+.hm-estado-card .status-good {
+  color: #047857;
+}
+.hm-estado-card .status-acceptable {
+  color: #b45309;
+}
+.hm-estado-card .param-title {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .hm-banner-estado {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .hm-banner-estado .modal-btn {
+    width: 100%;
+  }
+  .hm-caritas-modal {
+    margin: 0 12px;
+    padding: 18px;
+  }
+  .hm-carita {
+    font-size: 38px;
+  }
+}
+
+/* Botones principales de lo nuevo: más contraste con texto blanco */
+.hm-pref-form .modal-btn-save,
+.hm-banner-estado .modal-btn-save,
+#estado-diario-acompanante .modal-btn-save {
+  background-color: #0f766e;
+}
+
+/* ===== TAREA 1A: ALARMAS, CAMPANITA Y CONFIGURACIÓN ===== */
+
+/* Banner de alarma (abajo, centrado; por encima de los modales) */
+.hm-alarma {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 1100;
+  width: min(560px, calc(100% - 24px));
+  box-sizing: border-box;
+  padding: 16px 18px;
+  background: #fffbeb;
+  color: #78350f;
+  border: 3px solid #f59e0b;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.hm-alarma[hidden] {
+  display: none;
+}
+.hm-alarma-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.hm-alarma-titulo {
+  font-size: 20px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.hm-alarma-mas {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.hm-alarma-mensaje {
+  margin: 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.hm-alarma-hora {
+  margin: 2px 0 6px;
+  font-size: 15px;
+}
+.hm-alarma-toque {
+  margin: 6px 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1d4ed8;
+}
+.hm-error-texto {
+  margin: 6px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #b91c1c;
+}
+.hm-alarma-botones {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.hm-alarma-botones .modal-btn {
+  flex: 1;
+  min-height: 48px;
+  font-size: 16px;
+}
+.hm-alarma .modal-btn-save {
+  background-color: #0f766e;
+}
+.hm-alarma button:focus-visible,
+.hm-campana-btn:focus-visible,
+.hm-campana-panel button:focus-visible,
+.hm-config-modal button:focus-visible,
+.hm-config-modal input:focus-visible,
+.hm-config-modal select:focus-visible,
+.hm-notif-panel button:focus-visible,
+.hm-instalar summary:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
+/* Campanita en la cabecera: a la derecha en pantallas grandes, junto a la hamburguesa en las chicas */
+.nav-logo {
+  order: 0;
+}
+.nav-links {
+  order: 1;
+}
+.hm-campanita {
+  order: 2;
+  position: relative;
+  margin-left: 16px;
+}
+.hm-campana-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b; /* Color gris por defecto */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover: cambia al celeste y resalta el borde */
+.hm-campana-btn:hover {
+  color: #5cb8bc;
+  border-color: #5cb8bc;
+  box-shadow: 0 0 8px rgba(92, 184, 188, 0.3);
+}
+
+.hm-campana-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  background: #b91c1c;
+  color: #ffffff;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 22px;
+  text-align: center;
+}
+.hm-campana-badge[hidden] {
+  display: none;
+}
+.hm-campana-panel {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  z-index: 1050;
+  width: min(380px, calc(100vw - 24px));
+  max-height: 70vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 14px;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+.hm-campana-panel[hidden] {
+  display: none;
+}
+.hm-campana-titulo {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #2c3e50;
+}
+.hm-campana-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #1e293b;
+}
+.hm-campana-item.sin-leer {
+  background: #fef3c7;
+  font-weight: 700;
+}
+.hm-campana-fecha {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+.hm-campana-item .modal-btn {
+  align-self: flex-start;
+  min-height: 44px;
+}
+
+@media (max-width: 1024px) {
+  .hm-campanita {
+    order: 1;
+    margin-left: auto;
+    margin-right: 14px;
+  }
+  .navbar-container .menu-toggle {
+    order: 2;
+    margin-left: 0;
+  }
+}
+
+/* Panel "Activar notificaciones" */
+.hm-notif-panel {
+  margin: 10px 0;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+}
+.hm-notif-panel .modal-btn {
+  min-height: 48px;
+  font-size: 16px;
+  background-color: #0f766e;
+}
+.hm-instalar {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.hm-instalar summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #2c3e50;
+  padding: 6px 0;
+}
+
+/* Modal "Configurar alarma" */
+.hm-config-modal {
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.hm-config-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hm-fila-probar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.hm-fila-probar .hm-campo {
+  flex: 1;
+  min-width: 0;
+}
+.hm-config-modal .hm-fila-switch label {
+  font-size: 16px;
+  flex: 1;
+}
+.hm-config-modal .modal-btn {
+  min-height: 44px;
+}
+.hm-config-modal .modal-btn-save {
+  background-color: #0f766e;
+}
+.hm-config-dias {
+  margin: 0;
+  padding: 10px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hm-config-dias legend {
+  padding: 0 6px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* ===== BOTÓN S.O.S. (todas las clases con prefijo sos-) ===== */
+
+/* Foco visible en todo lo del S.O.S. */
+.sos-boton-flotante:focus-visible,
+.sos-overlay button:focus-visible,
+.sos-overlay a:focus-visible,
+.sos-overlay input:focus-visible,
+.sos-banner button:focus-visible,
+.sos-banner a:focus-visible,
+.sos-wrapper button:focus-visible,
+.sos-wrapper a:focus-visible,
+.sos-modal button:focus-visible,
+.sos-modal input:focus-visible {
+  outline: 4px solid #1d4ed8;
+  outline-offset: 3px;
+}
+
+/* Botón rojo flotante (afectado), visible en todas las pestañas */
+.sos-boton-flotante {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 900;
+  width: 76px;
+  height: 76px;
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  background: #b91c1c;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+.sos-boton-flotante:hover {
+  background: #991b1b;
+}
+.sos-boton-flotante:active {
+  transform: scale(0.96);
+}
+
+/* Confirmación de pantalla completa */
+.sos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #7f1d1d;
+  color: #ffffff;
+  overflow-y: auto;
+}
+.sos-overlay-resultado {
+  background: #1e293b;
+}
+.sos-conf {
+  width: min(520px, 100%);
+  text-align: center;
+}
+.sos-conf-cuerpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.sos-conf-titulo {
+  font-size: 30px;
+  font-weight: 800;
+}
+.sos-conf-cuenta {
+  font-size: 34px;
+  font-weight: 800;
+  min-height: 1.3em;
+}
+.sos-conf-texto {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.sos-conf-numero {
+  font-size: 22px;
+  font-weight: 700;
+}
+.sos-conf-ubicacion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.sos-conf-ubicacion .sos-casilla {
+  width: 32px;
+  height: 32px;
+  accent-color: #ffffff;
+}
+.sos-conf-ubicacion label {
+  cursor: pointer;
+}
+.sos-btn-cancelar {
+  width: 100%;
+  min-height: 72px;
+  font-size: 26px;
+  font-weight: 800;
+  background: #ffffff;
+  color: #7f1d1d;
+  border: 4px solid #ffffff;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.sos-btn-cancelar:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.sos-llamar {
+  display: block;
+  width: 100%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  background: #16a34a;
+  color: #052e16;
+  border-radius: 14px;
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.sos-aviso-amarillo {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background: #fef3c7;
+  color: #78350f;
+  border: 2px solid #f59e0b;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.sos-conf-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.sos-overlay .sos-mensaje {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+/* Botones grandes en general */
+.sos-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 10px 18px;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sos-btn-principal {
+  background: #b91c1c;
+  color: #ffffff;
+}
+.sos-btn-secundario {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: #94a3b8;
+}
+.sos-btn-llamar-acomp {
+  background: #15803d;
+  color: #ffffff;
+}
+.sos-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.sos-btn-modal {
+  min-height: 48px;
+  font-size: 16px;
+}
+
+/* Banner del acompañante, debajo de la barra de navegación */
+.sos-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 990;
+  max-height: 65vh;
+  overflow-y: auto;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  background: #7f1d1d;
+  color: #ffffff;
+  border-bottom: 4px solid #fca5a5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sos-banner[hidden] {
+  display: none;
+}
+.sos-banner-aviso {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: #fef3c7;
+  color: #78350f;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.sos-btn-cerrar-aviso {
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 16px;
+  font-weight: 800;
+  background: #ffffff;
+  color: #78350f;
+  border: 2px solid #78350f;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Tarjeta de un S.O.S. activo (banner y pestaña) */
+.sos-evento {
+  padding: 12px 14px;
+  background: #ffffff;
+  color: #1e293b;
+  border: 3px solid #b91c1c;
+  border-radius: 12px;
+}
+.sos-evento-atendido {
+  border-color: #15803d;
+}
+.sos-evento-titulo {
+  display: block;
+  font-size: 20px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.sos-evento-tiempo {
+  margin: 4px 0;
+  font-size: 16px;
+}
+.sos-evento-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.sos-evento-botones .sos-btn {
+  flex: 1 1 160px;
+}
+
+/* Pestaña S.O.S. */
+.sos-ayuda-grande {
+  margin: 8px 0 16px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1e293b;
+}
+.sos-seccion {
+  margin-bottom: 26px;
+}
+.sos-seccion-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sos-subtitulo {
+  font-size: 21px;
+  font-weight: 800;
+  color: #2c3e50;
+}
+.sos-contador {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1e293b;
+}
+.sos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.sos-vacio {
+  font-size: 16px;
+  color: #475569;
+}
+.sos-mensaje {
+  margin: 8px 0;
+  min-height: 1.3em;
+  font-size: 16px;
+  font-weight: 700;
+  color: #334155;
+}
+.sos-mensaje-error {
+  color: #b91c1c;
+}
+.sos-mensaje-ok {
+  color: #047857;
+}
+.sos-ayuda {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #475569;
+}
+.sos-item-linea {
+  margin: 2px 0;
+  font-size: 16px;
+  color: #1e293b;
+  overflow-wrap: anywhere;
+}
+
+/* Contactos: el .param-card original es celeste, el contenido va en una caja blanca para el contraste */
+.sos-contacto {
+  padding: 6px;
+}
+.sos-contacto-cuerpo {
+  padding: 12px 14px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+.sos-contacto-datos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sos-contacto-nombre {
+  font-size: 20px;
+  color: #1e293b;
+  overflow-wrap: anywhere;
+}
+.sos-etiqueta-prioritario {
+  padding: 4px 10px;
+  background: #b91c1c;
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.sos-botonera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.sos-btn-flecha,
+.sos-btn-accion {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 8px 14px;
+  background: #ffffff;
+  color: #1e293b;
+  border: 2px solid #64748b;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sos-btn-flecha {
+  font-size: 22px;
+  padding: 4px 12px;
+}
+.sos-btn-flecha:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sos-btn-peligro {
+  color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+/* Historial */
+.sos-item {
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+}
+.sos-item-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sos-estado {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.sos-estado-activo {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.sos-estado-atendido {
+  background: #dcfce7;
+  color: #166534;
+}
+.sos-estado-cancelado {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+/* Formulario de contacto */
+.sos-modal {
+  max-width: 460px;
+  max-height: 92vh;
+  overflow-y: auto;
+}
+.sos-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sos-campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sos-campo-grupo label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+.sos-campo {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 18px;
+  border: 2px solid #94a3b8;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.sos-fila-casilla {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sos-fila-casilla label {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2c3e50;
+  cursor: pointer;
+}
+.sos-fila-casilla .sos-casilla {
+  width: 28px;
+  height: 28px;
+  accent-color: #0f766e;
+}
+
+@media (max-width: 480px) {
+  .sos-conf-cuenta {
+    font-size: 28px;
+  }
+  .sos-llamar {
+    font-size: 21px;
+  }
+  .sos-evento-botones .sos-btn {
+    flex-basis: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sos-boton-flotante,
+  .sos-btn,
+  .sos-overlay * {
+    transition: none !important;
+    animation: none !important;
+  }
+  .sos-boton-flotante:active {
+    transform: none;
+  }
+}
+
+/* Espacio al final de la pestaña para que el botón flotante no tape el último contenido */
+.sos-wrapper {
+  padding-bottom: 100px;
+}
+
+/* --- TARJETA DE MEDICAMENTO ESTÉTICA (CENTRADA Y SIN ANIMACIONES) --- */
+
+.med-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 8px solid #5cb8bc;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  padding: 24px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos internos horizontalmente */
+  text-align: center; /* Centra los textos */
+  gap: 16px;
+}
+
+.med-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.med-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.med-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Contenedor del stock alineado al centro */
+.med-stock-container {
+  display: flex;
+  flex-direction: column; /* Coloca el número arriba y la palabra unidades abajo para un centrado limpio */
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #f1f5f9;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.med-stock-number {
+  font-size: 38px;
+  font-weight: 800;
+  color: #0f766e;
+  line-height: 1;
+}
+
+.med-stock-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: lowercase;
+  margin-top: 4px;
+}
+
+.med-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background-color: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.med-card-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.med-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.med-btn-edit {
+  background-color: #f1f5f9;
+  color: #334155;
+}
+
+.med-btn-edit:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.med-btn-delete {
+  background-color: #fef2f2;
+  color: #991b1b;
+}
+
+.med-btn-delete:hover {
+  background-color: #fee2e2;
+  color: #7f1d1d;
 }

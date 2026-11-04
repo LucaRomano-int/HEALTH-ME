@@ -4,7 +4,8 @@ const formPedir = document.getElementById("formPedir");
 const formNueva = document.getElementById("formNueva");
 const msg = document.getElementById("msg");
 
-const API_URL = "https://health-me.infinityfreeapp.com";
+// Ruta desde la raíz del sitio: sirve con cualquier puerto o host.
+const API_URL = "/health-me_backend-php";
 
 if (token) {
   document.getElementById("token").value = token;

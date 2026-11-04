@@ -7,7 +7,8 @@ const registerForm = document.getElementById('registerForm');
 const authTitle = document.getElementById('authTitle');
 const authSubtitle = document.getElementById('authSubtitle');
 
-const API_URL = "https://health-me.infinityfreeapp.com";
+// Ruta desde la raíz del sitio: sirve con cualquier puerto o host (localhost, 127.0.0.1, Azure...).
+const API_URL = "/health-me_backend-php";
 
 tabLogin.addEventListener('click', () => {
   if (tabLogin.classList.contains('active') != true) {
@@ -56,27 +57,30 @@ loginForm.addEventListener('submit', (e) => {
 
   fetch(`${API_URL}/api/login_usuario.php`, {
     method: 'POST',
-    mode: 'cors', // <--- Añadir esto explícitamente para peticiones cruzadas
-    credentials: 'include',
+    credentials: 'include', // Vital para que la cookie de sesión viaje entre dominios
     headers: {
       'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
     },
     body: JSON.stringify(datos)
   })
     .then((respuesta) => respuesta.json())
     .then((datosRespuesta) => {
       if (datosRespuesta.ok) {
-        alert('¡Inicio de sesión exitoso!');
-        window.location.href = `${API_URL}/user.php`;
+        hmToast('¡Inicio de sesión exitoso!', 'ok', 1500);
+        setTimeout(() => {
+          window.location.href = `${API_URL}/${datosRespuesta.destino}`;
+        }, 900);
       } else {
-        alert(datosRespuesta.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.');
+        hmToast(datosRespuesta.mensaje || 'No pudimos iniciar sesión. Intenta nuevamente.', 'error');
       }
     })
     .catch((error) => {
       console.error('Error de conexión:', error);
-      alert('No pudimos conectar con el servidor. Intenta nuevamente.');
+      hmToast('No pudimos conectar con el servidor. Intenta nuevamente.', 'error');
     });
 });
+
 registerForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -89,16 +93,16 @@ registerForm.addEventListener('submit', (e) => {
     body: new FormData(registerForm)
   })
     .then((respuesta) => respuesta.json())
-    .then((datos) => {
+        .then((datos) => {
       if (datos.ok) {
-        alert('¡Cuenta creada con éxito! Ya puedes iniciar sesión.');
+        hmToast('¡Cuenta creada con éxito! Ya puedes iniciar sesión.', 'ok');
         registerForm.reset();
       } else {
-        alert(datos.mensaje || 'No pudimos crear la cuenta. Intenta nuevamente.');
+        hmToast(datos.mensaje || 'No pudimos crear la cuenta. Intenta nuevamente.', 'error');
       }
     })
     .catch(() => {
-      alert('No pudimos conectar con el servidor. Intenta nuevamente.');
+      hmToast('No pudimos conectar con el servidor. Intenta nuevamente.', 'error');
     });
 });
 

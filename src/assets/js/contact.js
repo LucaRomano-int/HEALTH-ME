@@ -1,6 +1,37 @@
 const contactForm = document.getElementById('contactForm');
 
-const API_URL = "https://health-me.infinityfreeapp.com/api";
+// Ruta desde la raíz del sitio: sirve con cualquier puerto o host.
+const API_URL = "/health-me_backend-php/api";
+
+// Si hay una sesión iniciada, el menú ofrece volver al panel en lugar de "Iniciar sesión".
+// Esta página es estática y no sabe sola si estás logueado; se lo pregunta al servidor (la sesión no se toca).
+async function actualizarMenuSegunSesion() {
+  const enlaceLogin = document.querySelector('#nav-links a.btn-login');
+  if (enlaceLogin == null) return;
+  const BACKEND = '/health-me_backend-php'; // misma ruta que usa login.js
+  try {
+    const respuesta = await fetch(`${BACKEND}/api/sesion.php`, {
+      credentials: 'include',
+      headers: { Accept: 'application/json' }
+    });
+    if (!respuesta.ok) return; // 401: no hay sesión, queda "Iniciar sesión"
+    const datos = await respuesta.json();
+    if (datos == null || datos.ok !== true) return;
+
+    const esAdmin = datos.usuario != null && datos.usuario.nivel === 'administrador';
+    enlaceLogin.textContent = 'MI PANEL';
+    enlaceLogin.setAttribute('href', `${BACKEND}/${esAdmin ? 'admin.php' : 'user.php'}`);
+
+    const enlaceSalir = document.createElement('a');
+    enlaceSalir.className = 'nav-link';
+    enlaceSalir.textContent = 'CERRAR SESIÓN';
+    enlaceSalir.setAttribute('href', `${BACKEND}/api/logout.php`);
+    enlaceLogin.insertAdjacentElement('afterend', enlaceSalir);
+  } catch (_) {
+    // Sin conexión con el servidor: el menú queda como estaba
+  }
+}
+actualizarMenuSegunSesion();
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -22,16 +53,16 @@ contactForm.addEventListener('submit', (e) => {
       body: new FormData(contactForm)
     })
       .then((respuesta) => respuesta.json())
-      .then((datos) => {
+            .then((datos) => {
         if (datos.ok) {
-          alert(`¡Gracias por contactarnos, ${name} ${lastname}! Hemos recibido tu mensaje sobre "${motivo}" y te responderemos a la brevedad a ${email}.`);
+          hmToast(`¡Gracias por contactarnos, ${name} ${lastname}! Hemos recibido tu mensaje sobre "${motivo}" y te responderemos a la brevedad a ${email}.`, 'ok', 9000);
           contactForm.reset();
         } else {
-          alert('No pudimos enviar tu mensaje. Intenta nuevamente.');
+          hmToast('No pudimos enviar tu mensaje. Intenta nuevamente.', 'error');
         }
       })
       .catch(() => {
-        alert('No pudimos enviar tu mensaje. Intenta nuevamente.');
+        hmToast('No pudimos enviar tu mensaje. Intenta nuevamente.', 'error');
       });
   }
 });
